@@ -1,0 +1,464 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>WarehouseDele</class>
+ <widget class="QMainWindow" name="WarehouseDele">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>485</width>
+    <height>385</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>485</width>
+    <height>385</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>485</width>
+    <height>385</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QListView" name="PIDView">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>100</y>
+      <width>181</width>
+      <height>241</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>18</pointsize>
+     </font>
+    </property>
+    <property name="cursor" stdset="0">
+     <cursorShape>ArrowCursor</cursorShape>
+    </property>
+    <property name="mouseTracking">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QListView{  /*常态*/
+	background-color: rgb(204, 221, 255);
+	border: none;
+	border-radius: 2px;
+	color: rgb(0,0,0);
+}</string>
+    </property>
+    <property name="editTriggers">
+     <set>QAbstractItemView::NoEditTriggers</set>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_1">
+    <property name="geometry">
+     <rect>
+      <x>230</x>
+      <y>170</y>
+      <width>201</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>18</pointsize>
+     </font>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{  /*常态*/
+	color:white;
+	background-color: rgb(85, 170, 255);
+	border-radius: 15px;  border: 2px groove lavender;
+	border-style: outset;
+}
+QPushButton:hover{  /*鼠标悬浮时*/
+	background: rgb(49,106,234);
+}
+QPushButton:pressed{  /*鼠标按下时*/
+	background:rgb(96,96,96);
+	color: rgb(200, 200, 200);
+}</string>
+    </property>
+    <property name="text">
+     <string>删除该模具/货柜</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Label1">
+    <property name="geometry">
+     <rect>
+      <x>230</x>
+      <y>130</y>
+      <width>161</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>18</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>所选备件数量:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="NumLabel">
+    <property name="geometry">
+     <rect>
+      <x>390</x>
+      <y>130</y>
+      <width>71</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>18</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="CabinetEdit">
+    <property name="geometry">
+     <rect>
+      <x>340</x>
+      <y>230</y>
+      <width>121</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>18</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLineEdit{  /*常态*/
+	background-color: rgb(204, 221, 255);
+	border: none;
+	border-radius: 2px;
+	color: rgb(0,0,0);
+}</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+    <property name="readOnly">
+     <bool>false</bool>
+    </property>
+    <property name="placeholderText">
+     <string>输入柜号</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Label2">
+    <property name="geometry">
+     <rect>
+      <x>230</x>
+      <y>235</y>
+      <width>111</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>18</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>输入柜号:</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_2">
+    <property name="geometry">
+     <rect>
+      <x>350</x>
+      <y>290</y>
+      <width>111</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>18</pointsize>
+     </font>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{  /*常态*/
+	color:white;
+	background-color: rgb(85, 170, 255);
+	border-radius: 15px;  border: 2px groove lavender;
+	border-style: outset;
+}
+QPushButton:hover{  /*鼠标悬浮时*/
+	background: rgb(49,106,234);
+}
+QPushButton:pressed{  /*鼠标按下时*/
+	background:rgb(96,96,96);
+	color: rgb(200, 200, 200);
+}</string>
+    </property>
+    <property name="text">
+     <string>新增柜号</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_3">
+    <property name="geometry">
+     <rect>
+      <x>220</x>
+      <y>290</y>
+      <width>111</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>18</pointsize>
+     </font>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{  /*常态*/
+	color:white;
+	background-color: rgb(85, 170, 255);
+	border-radius: 15px;  border: 2px groove lavender;
+	border-style: outset;
+}
+QPushButton:hover{  /*鼠标悬浮时*/
+	background: rgb(49,106,234);
+}
+QPushButton:pressed{  /*鼠标按下时*/
+	background:rgb(96,96,96);
+	color: rgb(200, 200, 200);
+}</string>
+    </property>
+    <property name="text">
+     <string>切换选项</string>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="ShowLabel">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>65</y>
+      <width>161</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>18</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>冲压模具类别⬋</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="BackGround">
+    <property name="geometry">
+     <rect>
+      <x>5</x>
+      <y>5</y>
+      <width>476</width>
+      <height>356</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 255, 255);
+border-radius: 15px;
+border-style: outset;</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="LogoLabel">
+    <property name="geometry">
+     <rect>
+      <x>270</x>
+      <y>10</y>
+      <width>200</width>
+      <height>53</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="../resources.qrc">:/images/logo200x53.jpg</pixmap>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="ChangeButton">
+    <property name="geometry">
+     <rect>
+      <x>230</x>
+      <y>90</y>
+      <width>101</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>9</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{  /*常态*/
+	color:white;
+	background-color: rgb(85, 170, 255);
+	border-radius: 10px;  border: 2px groove lavender;
+	border-style: outset;
+}
+QPushButton:hover{  /*鼠标悬浮时*/
+	background: rgb(49,106,234);
+}
+QPushButton:pressed{  /*鼠标按下时*/
+	background:rgb(96,96,96);
+	color: rgb(200, 200, 200);
+}
+QPushButton:!enabled {   /*按钮禁用时*/
+	background: rgb(100, 100, 100);
+	color: rgb(200, 200, 200);
+}
+</string>
+    </property>
+    <property name="text">
+     <string>切换为成型备件</string>
+    </property>
+    <property name="checkable">
+     <bool>true</bool>
+    </property>
+    <property name="checked">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="ChangeButtonc">
+    <property name="geometry">
+     <rect>
+      <x>340</x>
+      <y>90</y>
+      <width>101</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>9</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{  /*常态*/
+	color:white;
+	background-color: rgb(85, 170, 255);
+	border-radius: 10px;  border: 2px groove lavender;
+	border-style: outset;
+}
+QPushButton:hover{  /*鼠标悬浮时*/
+	background: rgb(49,106,234);
+}
+QPushButton:pressed{  /*鼠标按下时*/
+	background:rgb(96,96,96);
+	color: rgb(200, 200, 200);
+}
+QPushButton:!enabled {   /*按钮禁用时*/
+	background: rgb(100, 100, 100);
+	color: rgb(200, 200, 200);
+}
+</string>
+    </property>
+    <property name="text">
+     <string>切换为模具货柜</string>
+    </property>
+    <property name="checkable">
+     <bool>true</bool>
+    </property>
+    <property name="checked">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <zorder>BackGround</zorder>
+   <zorder>PIDView</zorder>
+   <zorder>pushButton_1</zorder>
+   <zorder>Label1</zorder>
+   <zorder>NumLabel</zorder>
+   <zorder>CabinetEdit</zorder>
+   <zorder>Label2</zorder>
+   <zorder>pushButton_2</zorder>
+   <zorder>pushButton_3</zorder>
+   <zorder>ShowLabel</zorder>
+   <zorder>LogoLabel</zorder>
+   <zorder>ChangeButton</zorder>
+   <zorder>ChangeButtonc</zorder>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>485</width>
+     <height>23</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <tabstops>
+  <tabstop>PIDView</tabstop>
+  <tabstop>ChangeButton</tabstop>
+  <tabstop>ChangeButtonc</tabstop>
+  <tabstop>pushButton_1</tabstop>
+  <tabstop>CabinetEdit</tabstop>
+  <tabstop>pushButton_3</tabstop>
+  <tabstop>pushButton_2</tabstop>
+ </tabstops>
+ <resources>
+  <include location="../resources.qrc"/>
+ </resources>
+ <connections/>
+</ui>

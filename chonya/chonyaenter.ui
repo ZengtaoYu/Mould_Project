@@ -1,0 +1,1549 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ChonyaEnter</class>
+ <widget class="QMainWindow" name="ChonyaEnter">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>760</width>
+    <height>640</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>760</width>
+    <height>640</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>760</width>
+    <height>640</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QLabel" name="Label12">
+    <property name="geometry">
+     <rect>
+      <x>549</x>
+      <y>400</y>
+      <width>61</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>18</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>模修:</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="PlotButton">
+    <property name="geometry">
+     <rect>
+      <x>575</x>
+      <y>5</y>
+      <width>181</width>
+      <height>46</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>18</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{  /*常态*/
+	color:white;
+	background-color: rgb(85, 170, 255);
+	border-radius: 15px;  border: 2px groove lavender;
+	border-style: outset;
+}
+QPushButton:hover{  /*鼠标悬浮时*/
+	background: rgb(49,106,234);
+}
+QPushButton:pressed{  /*鼠标按下时*/
+	background:rgb(96,96,96);
+	color: rgb(200, 200, 200);
+}</string>
+    </property>
+    <property name="text">
+     <string>产量曲线图</string>
+    </property>
+    <property name="icon">
+     <iconset resource="../resources.qrc">
+      <normaloff>:/images/plot.png</normaloff>:/images/plot.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>30</width>
+      <height>30</height>
+     </size>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="DirRepair">
+    <property name="geometry">
+     <rect>
+      <x>610</x>
+      <y>400</y>
+      <width>101</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>18</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="cursor">
+     <cursorShape>ArrowCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QComboBox{  /*常态*/
+	background-color: rgb(204, 221, 255);
+	border: none;
+	border-radius: 2px;
+	color: rgb(0,0,0);
+	font: 18pt &quot;微软雅黑&quot;;
+}</string>
+    </property>
+    <property name="editable">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="Operater">
+    <property name="geometry">
+     <rect>
+      <x>425</x>
+      <y>400</y>
+      <width>111</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>18</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="cursor">
+     <cursorShape>ArrowCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QComboBox{  /*常态*/
+	background-color: rgb(204, 221, 255);
+	border: none;
+	border-radius: 2px;
+	color: rgb(0,0,0);
+	font: 18pt &quot;微软雅黑&quot;;
+}</string>
+    </property>
+    <property name="editable">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Label11">
+    <property name="geometry">
+     <rect>
+      <x>340</x>
+      <y>400</y>
+      <width>91</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>18</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>操作员:</string>
+    </property>
+   </widget>
+   <widget class="QListView" name="MachineView">
+    <property name="geometry">
+     <rect>
+      <x>70</x>
+      <y>360</y>
+      <width>211</width>
+      <height>181</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>18</pointsize>
+     </font>
+    </property>
+    <property name="cursor" stdset="0">
+     <cursorShape>ArrowCursor</cursorShape>
+    </property>
+    <property name="mouseTracking">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QListView{  /*常态*/
+	background-color: rgb(204, 221, 255);
+	border: none;
+	border-radius: 2px;
+	color: rgb(0,0,0);
+}</string>
+    </property>
+    <property name="editTriggers">
+     <set>QAbstractItemView::NoEditTriggers</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Label18">
+    <property name="geometry">
+     <rect>
+      <x>70</x>
+      <y>560</y>
+      <width>61</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>18</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>日期:</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="ProductTime">
+    <property name="geometry">
+     <rect>
+      <x>130</x>
+      <y>560</y>
+      <width>151</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>18</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLineEdit{  /*常态*/
+	background-color: rgb(204, 221, 255);
+	border: none;
+	border-radius: 2px;
+	color: rgb(0,0,0);
+}</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+    <property name="readOnly">
+     <bool>false</bool>
+    </property>
+    <property name="placeholderText">
+     <string>YYYY.MM.dd</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="ProductNum">
+    <property name="geometry">
+     <rect>
+      <x>480</x>
+      <y>350</y>
+      <width>71</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>18</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLineEdit{  /*常态*/
+	background-color: rgb(204, 221, 255);
+	border: none;
+	border-radius: 2px;
+	color: rgb(0,0,0);
+}</string>
+    </property>
+    <property name="text">
+     <string>0</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+    <property name="readOnly">
+     <bool>false</bool>
+    </property>
+    <property name="placeholderText">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Label9">
+    <property name="geometry">
+     <rect>
+      <x>420</x>
+      <y>350</y>
+      <width>61</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>18</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>产量:</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="EnterButton">
+    <property name="geometry">
+     <rect>
+      <x>575</x>
+      <y>560</y>
+      <width>141</width>
+      <height>46</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>18</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{  /*常态*/
+	color:white;
+	background-color: rgb(85, 170, 255);
+	border-radius: 15px;  border: 2px groove lavender;
+	border-style: outset;
+}
+QPushButton:hover{  /*鼠标悬浮时*/
+	background: rgb(49,106,234);
+}
+QPushButton:pressed{  /*鼠标按下时*/
+	background:rgb(96,96,96);
+	color: rgb(200, 200, 200);
+}</string>
+    </property>
+    <property name="text">
+     <string>产量录入</string>
+    </property>
+    <property name="icon">
+     <iconset resource="../resources.qrc">
+      <normaloff>:/images/enter.png</normaloff>:/images/enter.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>20</width>
+      <height>20</height>
+     </size>
+    </property>
+   </widget>
+   <widget class="QLabel" name="LogoLabel">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>200</width>
+      <height>53</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="../resources.qrc">:/images/logo200x53.jpg</pixmap>
+    </property>
+   </widget>
+   <widget class="QLabel" name="BackGround">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>761</width>
+      <height>641</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 255, 255);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Label2">
+    <property name="geometry">
+     <rect>
+      <x>70</x>
+      <y>320</y>
+      <width>101</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>18</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>选择机台</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Label10">
+    <property name="geometry">
+     <rect>
+      <x>555</x>
+      <y>350</y>
+      <width>61</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>18</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>kpcs</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="ReturnButton">
+    <property name="geometry">
+     <rect>
+      <x>350</x>
+      <y>560</y>
+      <width>191</width>
+      <height>46</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>18</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{  /*常态*/
+	color:white;
+	background-color: rgb(85, 170, 255);
+	border-radius: 15px;  border: 2px groove lavender;
+	border-style: outset;
+}
+QPushButton:hover{  /*鼠标悬浮时*/
+	background: rgb(49,106,234);
+}
+QPushButton:pressed{  /*鼠标按下时*/
+	background:rgb(96,96,96);
+	color: rgb(200, 200, 200);
+}</string>
+    </property>
+    <property name="text">
+     <string>撤销最后一条</string>
+    </property>
+    <property name="icon">
+     <iconset resource="../resources.qrc">
+      <normaloff>:/images/return.png</normaloff>:/images/return.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>25</width>
+      <height>25</height>
+     </size>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="GetButton">
+    <property name="geometry">
+     <rect>
+      <x>690</x>
+      <y>55</y>
+      <width>51</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>18</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{  /*常态*/
+	color:white;
+	background-color: rgb(85, 170, 255);
+	border-radius: 15px;  border: 2px groove lavender;
+	border-style: outset;
+}
+QPushButton:hover{  /*鼠标悬浮时*/
+	background: rgb(49,106,234);
+}
+QPushButton:pressed{  /*鼠标按下时*/
+	background:rgb(96,96,96);
+	color: rgb(200, 200, 200);
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset resource="../resources.qrc">
+      <normaloff>:/images/data.png</normaloff>:/images/data.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>30</width>
+      <height>30</height>
+     </size>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Label1_1">
+    <property name="geometry">
+     <rect>
+      <x>70</x>
+      <y>235</y>
+      <width>111</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>18</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>增加机台:</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="MachineNum_2">
+    <property name="geometry">
+     <rect>
+      <x>180</x>
+      <y>230</y>
+      <width>101</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>16</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLineEdit{  /*常态*/
+	background-color: rgb(204, 221, 255);
+	border: none;
+	border-radius: 2px;
+	color: rgb(0,0,0);
+}</string>
+    </property>
+    <property name="text">
+     <string>1#</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+    <property name="readOnly">
+     <bool>false</bool>
+    </property>
+    <property name="placeholderText">
+     <string>#6</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="MoldCombo">
+    <property name="geometry">
+     <rect>
+      <x>320</x>
+      <y>60</y>
+      <width>351</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>18</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="cursor">
+     <cursorShape>ArrowCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QComboBox{  /*常态*/
+	background-color: rgb(204, 221, 255);
+	border: none;
+	border-radius: 2px;
+	color: rgb(0,0,0);
+	font: 18pt &quot;微软雅黑&quot;;
+}</string>
+    </property>
+    <property name="editable">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Label8">
+    <property name="geometry">
+     <rect>
+      <x>350</x>
+      <y>350</y>
+      <width>61</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>18</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(0, 170, 255);</string>
+    </property>
+    <property name="text">
+     <string>白班</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="DirRepair_2">
+    <property name="geometry">
+     <rect>
+      <x>610</x>
+      <y>510</y>
+      <width>101</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>18</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="cursor">
+     <cursorShape>ArrowCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QComboBox{  /*常态*/
+	background-color: rgb(204, 221, 255);
+	border: none;
+	border-radius: 2px;
+	color: rgb(0,0,0);
+	font: 18pt &quot;微软雅黑&quot;;
+}</string>
+    </property>
+    <property name="editable">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="ProductNum_2">
+    <property name="geometry">
+     <rect>
+      <x>480</x>
+      <y>460</y>
+      <width>71</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>18</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLineEdit{  /*常态*/
+	background-color: rgb(204, 221, 255);
+	border: none;
+	border-radius: 2px;
+	color: rgb(0,0,0);
+}</string>
+    </property>
+    <property name="text">
+     <string>0</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+    <property name="readOnly">
+     <bool>false</bool>
+    </property>
+    <property name="placeholderText">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Label15">
+    <property name="geometry">
+     <rect>
+      <x>555</x>
+      <y>460</y>
+      <width>61</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>18</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>kpcs</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Label16">
+    <property name="geometry">
+     <rect>
+      <x>340</x>
+      <y>510</y>
+      <width>91</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>18</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>操作员:</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="Operater_2">
+    <property name="geometry">
+     <rect>
+      <x>425</x>
+      <y>510</y>
+      <width>111</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>18</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="cursor">
+     <cursorShape>ArrowCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QComboBox{  /*常态*/
+	background-color: rgb(204, 221, 255);
+	border: none;
+	border-radius: 2px;
+	color: rgb(0,0,0);
+	font: 18pt &quot;微软雅黑&quot;;
+}</string>
+    </property>
+    <property name="editable">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Label17">
+    <property name="geometry">
+     <rect>
+      <x>549</x>
+      <y>510</y>
+      <width>61</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>18</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>模修:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Label14">
+    <property name="geometry">
+     <rect>
+      <x>420</x>
+      <y>460</y>
+      <width>61</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>18</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>产量:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Label13">
+    <property name="geometry">
+     <rect>
+      <x>350</x>
+      <y>460</y>
+      <width>61</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>18</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(170, 170, 255);</string>
+    </property>
+    <property name="text">
+     <string>晚班</string>
+    </property>
+   </widget>
+   <widget class="QTextEdit" name="ProductID">
+    <property name="geometry">
+     <rect>
+      <x>70</x>
+      <y>100</y>
+      <width>211</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>18</pointsize>
+     </font>
+    </property>
+    <property name="cursor" stdset="0">
+     <cursorShape>ArrowCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTextEdit{  /*常态*/
+	background-color: rgb(160, 175, 200);
+	border: none;
+	border-radius: 2px;
+	color: rgb(0,0,0);
+}</string>
+    </property>
+    <property name="readOnly">
+     <bool>true</bool>
+    </property>
+    <property name="placeholderText">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Label0_1">
+    <property name="geometry">
+     <rect>
+      <x>70</x>
+      <y>65</y>
+      <width>111</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>18</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>产品料号:</string>
+    </property>
+   </widget>
+   <widget class="QTabWidget" name="tabWidget">
+    <property name="geometry">
+     <rect>
+      <x>299</x>
+      <y>110</y>
+      <width>441</width>
+      <height>231</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 255, 255);</string>
+    </property>
+    <property name="currentIndex">
+     <number>0</number>
+    </property>
+    <widget class="QWidget" name="Tab1">
+     <attribute name="title">
+      <string>保养进度</string>
+     </attribute>
+     <widget class="QLabel" name="PercentLabel1_1">
+      <property name="geometry">
+       <rect>
+        <x>220</x>
+        <y>45</y>
+        <width>141</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>微软雅黑</family>
+        <pointsize>18</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="PercentLabel3_1">
+      <property name="geometry">
+       <rect>
+        <x>220</x>
+        <y>125</y>
+        <width>141</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>微软雅黑</family>
+        <pointsize>18</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="Label3_1">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>5</y>
+        <width>111</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>微软雅黑</family>
+        <pointsize>18</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>当前机台:</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="Label4_1">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>40</y>
+        <width>201</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>微软雅黑</family>
+        <pointsize>18</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>下料零件损耗程度:</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="MachineNum">
+      <property name="geometry">
+       <rect>
+        <x>120</x>
+        <y>5</y>
+        <width>61</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>微软雅黑</family>
+        <pointsize>18</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="Label6_1">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>120</y>
+        <width>201</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>微软雅黑</family>
+        <pointsize>18</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>成型零件损耗程度:</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="PercentLabel2_1">
+      <property name="geometry">
+       <rect>
+        <x>270</x>
+        <y>85</y>
+        <width>141</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>微软雅黑</family>
+        <pointsize>18</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="PercentLabel4_1">
+      <property name="geometry">
+       <rect>
+        <x>220</x>
+        <y>165</y>
+        <width>141</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>微软雅黑</family>
+        <pointsize>18</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="Label5_1">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>80</y>
+        <width>251</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>微软雅黑</family>
+        <pointsize>18</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>关键易损件件损耗程度:</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="Label7_1">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>160</y>
+        <width>201</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>微软雅黑</family>
+        <pointsize>18</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>模具寿命损耗程度:</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="NewButton">
+      <property name="geometry">
+       <rect>
+        <x>370</x>
+        <y>155</y>
+        <width>66</width>
+        <height>46</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>微软雅黑</family>
+        <pointsize>18</pointsize>
+        <weight>50</weight>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{  /*常态*/
+	color:white;
+	background-color: rgb(85, 170, 255);
+	border-radius: 15px;  border: 2px groove lavender;
+	border-style: outset;
+}
+QPushButton:hover{  /*鼠标悬浮时*/
+	background: rgb(49,106,234);
+}
+QPushButton:pressed{  /*鼠标按下时*/
+	background:rgb(96,96,96);
+	color: rgb(200, 200, 200);
+}</string>
+      </property>
+      <property name="text">
+       <string>翻新</string>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>20</width>
+        <height>20</height>
+       </size>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="Tab2">
+     <attribute name="title">
+      <string>本月次数</string>
+     </attribute>
+     <widget class="QLabel" name="PercentLabel2_2">
+      <property name="geometry">
+       <rect>
+        <x>220</x>
+        <y>55</y>
+        <width>201</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>微软雅黑</family>
+        <pointsize>18</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="Label6_2">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>145</y>
+        <width>181</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>微软雅黑</family>
+        <pointsize>18</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>本月大保养次数:</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="PercentLabel3_2">
+      <property name="geometry">
+       <rect>
+        <x>200</x>
+        <y>150</y>
+        <width>101</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>微软雅黑</family>
+        <pointsize>18</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="Label5_2">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>50</y>
+        <width>201</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>微软雅黑</family>
+        <pointsize>18</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>本月定期保养次数:</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="PercentLabel1_2">
+      <property name="geometry">
+       <rect>
+        <x>220</x>
+        <y>10</y>
+        <width>101</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>微软雅黑</family>
+        <pointsize>18</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="Label4_2">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>5</y>
+        <width>201</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>微软雅黑</family>
+        <pointsize>18</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>本月关单保养次数:</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="PercentLabel2_3">
+      <property name="geometry">
+       <rect>
+        <x>55</x>
+        <y>100</y>
+        <width>361</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>微软雅黑</family>
+        <pointsize>18</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+    </widget>
+   </widget>
+   <widget class="QLineEdit" name="UserEdit">
+    <property name="geometry">
+     <rect>
+      <x>180</x>
+      <y>280</y>
+      <width>101</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>16</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLineEdit{  /*常态*/
+	background-color: rgb(204, 221, 255);
+	border: none;
+	border-radius: 2px;
+	color: rgb(0,0,0);
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+    <property name="readOnly">
+     <bool>false</bool>
+    </property>
+    <property name="placeholderText">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Label1_2">
+    <property name="geometry">
+     <rect>
+      <x>70</x>
+      <y>285</y>
+      <width>111</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>18</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>增加员工:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Label0_2">
+    <property name="geometry">
+     <rect>
+      <x>70</x>
+      <y>185</y>
+      <width>111</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>18</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>产品出数:</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="OutNum">
+    <property name="geometry">
+     <rect>
+      <x>180</x>
+      <y>180</y>
+      <width>101</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>16</pointsize>
+     </font>
+    </property>
+    <property name="cursor">
+     <cursorShape>ArrowCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLineEdit{  /*常态*/
+	background-color: rgb(160, 175, 200);
+	border: none;
+	border-radius: 2px;
+	color: rgb(0,0,0);
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+    <property name="readOnly">
+     <bool>true</bool>
+    </property>
+    <property name="placeholderText">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="CheckButton">
+    <property name="geometry">
+     <rect>
+      <x>450</x>
+      <y>5</y>
+      <width>111</width>
+      <height>46</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>18</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{  /*常态*/
+	color:white;
+	background-color: rgb(85, 170, 255);
+	border-radius: 15px;  border: 2px groove lavender;
+	border-style: outset;
+}
+QPushButton:hover{  /*鼠标悬浮时*/
+	background: rgb(49,106,234);
+}
+QPushButton:pressed{  /*鼠标按下时*/
+	background:rgb(96,96,96);
+	color: rgb(200, 200, 200);
+}</string>
+    </property>
+    <property name="text">
+     <string>导出数据</string>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>30</width>
+      <height>30</height>
+     </size>
+    </property>
+   </widget>
+   <zorder>BackGround</zorder>
+   <zorder>Label12</zorder>
+   <zorder>PlotButton</zorder>
+   <zorder>DirRepair</zorder>
+   <zorder>Operater</zorder>
+   <zorder>Label11</zorder>
+   <zorder>MachineView</zorder>
+   <zorder>Label18</zorder>
+   <zorder>ProductTime</zorder>
+   <zorder>ProductNum</zorder>
+   <zorder>Label9</zorder>
+   <zorder>EnterButton</zorder>
+   <zorder>LogoLabel</zorder>
+   <zorder>Label2</zorder>
+   <zorder>Label10</zorder>
+   <zorder>ReturnButton</zorder>
+   <zorder>GetButton</zorder>
+   <zorder>Label1_1</zorder>
+   <zorder>MachineNum_2</zorder>
+   <zorder>MoldCombo</zorder>
+   <zorder>Label8</zorder>
+   <zorder>DirRepair_2</zorder>
+   <zorder>ProductNum_2</zorder>
+   <zorder>Label15</zorder>
+   <zorder>Label16</zorder>
+   <zorder>Operater_2</zorder>
+   <zorder>Label17</zorder>
+   <zorder>Label14</zorder>
+   <zorder>Label13</zorder>
+   <zorder>ProductID</zorder>
+   <zorder>Label0_1</zorder>
+   <zorder>tabWidget</zorder>
+   <zorder>UserEdit</zorder>
+   <zorder>Label1_2</zorder>
+   <zorder>Label0_2</zorder>
+   <zorder>OutNum</zorder>
+   <zorder>CheckButton</zorder>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>760</width>
+     <height>23</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <tabstops>
+  <tabstop>MoldCombo</tabstop>
+  <tabstop>MachineView</tabstop>
+  <tabstop>ProductTime</tabstop>
+  <tabstop>ProductNum</tabstop>
+  <tabstop>Operater</tabstop>
+  <tabstop>DirRepair</tabstop>
+  <tabstop>ProductNum_2</tabstop>
+  <tabstop>Operater_2</tabstop>
+  <tabstop>DirRepair_2</tabstop>
+  <tabstop>ReturnButton</tabstop>
+  <tabstop>EnterButton</tabstop>
+  <tabstop>MachineNum_2</tabstop>
+  <tabstop>UserEdit</tabstop>
+  <tabstop>ProductID</tabstop>
+  <tabstop>OutNum</tabstop>
+  <tabstop>tabWidget</tabstop>
+  <tabstop>NewButton</tabstop>
+  <tabstop>GetButton</tabstop>
+  <tabstop>CheckButton</tabstop>
+  <tabstop>PlotButton</tabstop>
+ </tabstops>
+ <resources>
+  <include location="../resources.qrc"/>
+ </resources>
+ <connections/>
+</ui>

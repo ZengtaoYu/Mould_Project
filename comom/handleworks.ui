@@ -1,0 +1,452 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>HandleWorks</class>
+ <widget class="QMainWindow" name="HandleWorks">
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>680</width>
+    <height>540</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>680</width>
+    <height>540</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>680</width>
+    <height>540</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QPushButton" name="PushButton">
+    <property name="geometry">
+     <rect>
+      <x>510</x>
+      <y>465</y>
+      <width>121</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>18</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{  /*常态*/
+	color:white;
+	background-color: rgb(85, 170, 255);
+	border-radius: 15px;  border: 2px groove lavender;
+	border-style: outset;
+}
+QPushButton:hover{  /*鼠标悬浮时*/
+	background: rgb(49,106,234);
+}
+QPushButton:pressed{  /*鼠标按下时*/
+	background:rgb(96,96,96);
+	color: rgb(200, 200, 200);
+}</string>
+    </property>
+    <property name="text">
+     <string>提交工单</string>
+    </property>
+   </widget>
+   <widget class="QTextEdit" name="MessageEdit">
+    <property name="geometry">
+     <rect>
+      <x>280</x>
+      <y>180</y>
+      <width>351</width>
+      <height>271</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>18</pointsize>
+     </font>
+    </property>
+    <property name="cursor" stdset="0">
+     <cursorShape>IBeamCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTextEdit{  /*常态*/
+	background-color: rgb(204, 221, 255);
+	border: none;
+	border-radius: 2px;
+	color: rgb(0,0,0);
+}</string>
+    </property>
+    <property name="placeholderText">
+     <string>请填写工单信息</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="PartCombo">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>100</y>
+      <width>151</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>18</pointsize>
+     </font>
+    </property>
+    <property name="cursor">
+     <cursorShape>ArrowCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QComboBox{  /*常态*/
+	background-color: rgb(204, 221, 255);
+	border: none;
+	border-radius: 2px;
+	color: rgb(0,0,0);
+}</string>
+    </property>
+    <property name="editable">
+     <bool>false</bool>
+    </property>
+    <item>
+     <property name="text">
+      <string>冲压部门</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>塑模部门</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>仓库部门</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QLabel" name="Label1">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>70</y>
+      <width>121</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>宋体</family>
+      <pointsize>20</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>选择部门:</string>
+    </property>
+   </widget>
+   <widget class="QListView" name="ProceList">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>260</y>
+      <width>201</width>
+      <height>191</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>18</pointsize>
+     </font>
+    </property>
+    <property name="cursor" stdset="0">
+     <cursorShape>ArrowCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QListView{  /*常态*/
+	background-color: rgb(204, 221, 255);
+	border: none;
+	border-radius: 2px;
+	color: rgb(0,0,0);
+}</string>
+    </property>
+    <property name="editTriggers">
+     <set>QAbstractItemView::NoEditTriggers</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Label2">
+    <property name="geometry">
+     <rect>
+      <x>280</x>
+      <y>70</y>
+      <width>181</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>宋体</family>
+      <pointsize>20</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>输入模具编号:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Label5">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>230</y>
+      <width>151</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>宋体</family>
+      <pointsize>20</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>选择处理人:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Label4">
+    <property name="geometry">
+     <rect>
+      <x>280</x>
+      <y>150</y>
+      <width>121</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>宋体</family>
+      <pointsize>20</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>填写信息:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="LogoLabel">
+    <property name="geometry">
+     <rect>
+      <x>470</x>
+      <y>10</y>
+      <width>200</width>
+      <height>53</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="../resources.qrc">:/images/logo200x53.jpg</pixmap>
+    </property>
+   </widget>
+   <widget class="QLabel" name="BackGround">
+    <property name="geometry">
+     <rect>
+      <x>5</x>
+      <y>5</y>
+      <width>671</width>
+      <height>516</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 255, 255);
+border: none;
+border-radius: 15px;
+color: rgb(0,0,0);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="MoldEdit">
+    <property name="geometry">
+     <rect>
+      <x>280</x>
+      <y>100</y>
+      <width>271</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>18</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLineEdit{  /*常态*/
+	background-color: rgb(204, 221, 255);
+	border: none;
+	border-radius: 2px;
+	color: rgb(0,0,0);
+}</string>
+    </property>
+    <property name="placeholderText">
+     <string>请输入模具编号</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="NatureCombo">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>180</y>
+      <width>151</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>18</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="cursor">
+     <cursorShape>ArrowCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QComboBox{  /*常态*/
+	background-color: rgb(204, 221, 255);
+	border: none;
+	border-radius: 2px;
+	color: rgb(0,0,0);
+	font: 18pt &quot;微软雅黑&quot;;
+}</string>
+    </property>
+    <property name="editable">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Label3">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>150</y>
+      <width>121</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>宋体</family>
+      <pointsize>20</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>模具性质:</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="EmailButton">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>111</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>16</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{  /*常态*/
+	color:white;
+	background-color: rgb(85, 170, 255);
+	border-radius: 15px;  border: 2px groove lavender;
+	border-style: outset;
+}
+QPushButton:hover{  /*鼠标悬浮时*/
+	background: rgb(49,106,234);
+}
+QPushButton:pressed{  /*鼠标按下时*/
+	background:rgb(96,96,96);
+color: rgb(200, 200, 200);
+}</string>
+    </property>
+    <property name="text">
+     <string>发送邮件</string>
+    </property>
+   </widget>
+   <zorder>BackGround</zorder>
+   <zorder>PushButton</zorder>
+   <zorder>MessageEdit</zorder>
+   <zorder>PartCombo</zorder>
+   <zorder>Label1</zorder>
+   <zorder>ProceList</zorder>
+   <zorder>Label2</zorder>
+   <zorder>Label5</zorder>
+   <zorder>Label4</zorder>
+   <zorder>LogoLabel</zorder>
+   <zorder>MoldEdit</zorder>
+   <zorder>NatureCombo</zorder>
+   <zorder>Label3</zorder>
+   <zorder>EmailButton</zorder>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>680</width>
+     <height>23</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <tabstops>
+  <tabstop>PartCombo</tabstop>
+  <tabstop>MoldEdit</tabstop>
+  <tabstop>NatureCombo</tabstop>
+  <tabstop>ProceList</tabstop>
+  <tabstop>MessageEdit</tabstop>
+  <tabstop>PushButton</tabstop>
+  <tabstop>EmailButton</tabstop>
+ </tabstops>
+ <resources>
+  <include location="../resources.qrc"/>
+ </resources>
+ <connections/>
+</ui>

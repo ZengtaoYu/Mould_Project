@@ -1,0 +1,18 @@
+# Java标准风格配置（基于astyle 3.6.12有效选项）
+style=java          # 核心：启用Java大括号风格（独占一行）
+indent=spaces=4     # 4空格缩进
+indent-after-parens # 括号后换行缩进
+
+# 括号与空行优化（替代无效选项）
+delete-empty-lines  # 删除多余空行（保留逻辑分隔空行）
+keep-one-line-blocks # 保留单行块（如单行if）
+attach-inlines      # 内联函数缩进
+
+# 空格与对齐
+pad-oper            # 操作符两侧加空格（a + b）
+unpad-paren         # 函数调用括号内不加空格
+align-pointer=name  # 指针/引用对齐变量名（int* ptr）
+
+# 长行与换行
+max-code-length=120 # 代码行长度限制
+break-after-logical # 逻辑运算符后换行
