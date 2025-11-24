@@ -82,6 +82,8 @@ MainWindow::MainWindow(QWidget *parent)
     if(!userName.isEmpty() && !passWord.isEmpty() && ui->checkBox->checkState()) {
         ui->PasswdEdit->setText(passWord);
     }
+    if(config.value("USERCONFIG/System").toString() == "warehouse")
+        QProcess::startDetached("email.exe");
     // 初始化定时器
     m_timer = new QTimer(this);
     connect(m_timer, &QTimer::timeout, this, &MainWindow::refresh_time);
@@ -138,7 +140,6 @@ connect:
         }
         goto connect;
     }
-
     // 初始化本地服务器，用于接收新实例的消息
     m_localServer = new QLocalServer(this);
     connect(m_localServer, &QLocalServer::newConnection, this, &MainWindow::handleNewConnection);
@@ -373,22 +374,20 @@ void MainWindow::performLogin() {
 void MainWindow::showAndActivate() {
     // 判断应该显示哪个窗口
     QWidget *targetWindow = nullptr;
-
-    if (m_activeWindow && m_activeWindow->isVisible()) {
+    if(m_activeWindow && m_activeWindow->isVisible()) {
         // 如果有活动的子窗口（ChonyaWindow/SumoWindow/WarehouseWindow），显示它
         targetWindow = m_activeWindow;
-    } else if (m_activeWindow) {
+    } else if(m_activeWindow) {
         // 子窗口存在但被隐藏了，显示它
         targetWindow = m_activeWindow;
     } else {
         // 还没有登录，显示主窗口
         targetWindow = this;
     }
-
     // 显示目标窗口
     targetWindow->show();
     // 如果窗口被最小化，恢复正常状态
-    if (targetWindow->isMinimized()) {
+    if(targetWindow->isMinimized()) {
         targetWindow->showNormal();
     }
     // 激活窗口并置顶
@@ -402,13 +401,12 @@ void MainWindow::showAndActivate() {
 
 void MainWindow::handleNewConnection() {
     QLocalSocket *socket = m_localServer->nextPendingConnection();
-    if (socket) {
+    if(socket) {
         // 读取消息（虽然这里我们不需要具体内容，但为了完整性还是读取一下）
         socket->waitForReadyRead(1000);
         socket->readAll();
         socket->disconnectFromServer();
         delete socket;
-
         // 显示并激活窗口
         showAndActivate();
     }

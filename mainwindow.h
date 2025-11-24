@@ -1,4 +1,4 @@
-﻿#ifndef MAINWINDOW_H
+#ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
 // Qt Core
@@ -12,6 +12,7 @@
 #include <QSqlError>
 #include <QSqlQuery>
 #include <QTimer>
+#include <QProcess>
 
 // Qt Network
 #include <QtNetwork/QLocalServer>
@@ -35,14 +36,12 @@
 #include "warehouse/warehousewindow.h"
 
 QT_BEGIN_NAMESPACE
-namespace Ui
-{
-    class MainWindow;
+namespace Ui {
+class MainWindow;
 }
 QT_END_NAMESPACE
 
-class MainWindow : public QMainWindow
-{
+class MainWindow : public QMainWindow {
     Q_OBJECT
 
 public:
