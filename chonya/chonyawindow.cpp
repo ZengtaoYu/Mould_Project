@@ -102,7 +102,7 @@ ChonyaWindow::ChonyaWindow(QVariant authority, QVariant name, QWidget *mainWin, 
     QAction *showAction = menu->addAction("打开程序");
     QAction *closeAction = menu->addAction("关闭程序");
     trayIcon->setContextMenu(menu);
-    connect(closeAction, &QAction::triggered, this, &QApplication::quit);
+    connect(closeAction, &QAction::triggered, this, &ChonyaWindow::closeApplication);
     connect(showAction, &QAction::triggered, this, &ChonyaWindow::show);
     connect(workAction, &QAction::triggered, this, &ChonyaWindow::showWorkMessage);
     connect(trayIcon, &QSystemTrayIcon::activated, this, &ChonyaWindow::onTrayIconActivated);
@@ -965,6 +965,21 @@ void ChonyaWindow::on_ReturnButton_clicked() {
 }
 
 // ==================== 其他功能 ====================
+
+bool ChonyaWindow::isProcessRunning(const QString &processName) {
+    QProcess process;
+    process.start("tasklist");
+    process.waitForFinished();
+    QString output = process.readAllStandardOutput();
+    return output.contains(processName, Qt::CaseInsensitive);
+}
+
+void ChonyaWindow::closeApplication() {
+    QApplication::quit();
+    if(isProcessRunning("email.exe")) {
+        QProcess::execute("taskkill", QStringList() << "/F" << "/IM" << "email.exe");
+    }
+}
 
 void ChonyaWindow::showWorkMessage() {
     ChonyaWindow::show();

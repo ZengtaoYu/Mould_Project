@@ -13,6 +13,7 @@
 #include <QIcon>
 #include <QListView>
 #include <QMenu>
+#include <QProcess>
 #include <QPointer>
 #include <QPushButton>
 #include <QScroller>
@@ -83,7 +84,7 @@ WarehouseWindow::WarehouseWindow(QVariant authority, QVariant name, QWidget *mai
     QAction *showAction = menu->addAction("打开程序");
     QAction *closeAction = menu->addAction("关闭程序");
     trayIcon->setContextMenu(menu);
-    connect(closeAction, &QAction::triggered, this, &QApplication::quit);
+    connect(closeAction, &QAction::triggered, this, &WarehouseWindow::closeApplication);
     connect(showAction, &QAction::triggered, this, &WarehouseWindow::show);
     connect(workAction, &QAction::triggered, this, &WarehouseWindow::showWorkMessage);
     connect(trayIcon, &QSystemTrayIcon::activated, this, &WarehouseWindow::onTrayIconActivated);
@@ -211,6 +212,21 @@ void WarehouseWindow::on_ReturnButtonc_clicked() {
     }
     mainWindow->show();
     this->close();
+}
+
+bool WarehouseWindow::isProcessRunning(const QString &processName) {
+    QProcess process;
+    process.start("tasklist");
+    process.waitForFinished();
+    QString output = process.readAllStandardOutput();
+    return output.contains(processName, Qt::CaseInsensitive);
+}
+
+void WarehouseWindow::closeApplication() {
+    QApplication::quit();
+    if(isProcessRunning("email.exe")) {
+        QProcess::execute("taskkill", QStringList() << "/F" << "/IM" << "email.exe");
+    }
 }
 
 void WarehouseWindow::showWorkMessage() {

@@ -74,6 +74,8 @@ private slots:
     void on_commandLinkButton_clicked();
 
     // 其他功能
+    bool isProcessRunning(const QString &processName);
+    void closeApplication();
     void showWorkMessage();
 
 private:

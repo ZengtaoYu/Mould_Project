@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_SumoWindow_t {
-    QByteArrayData data[30];
-    char stringdata0[575];
+    QByteArrayData data[33];
+    char stringdata0[621];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -38,35 +38,40 @@ QT_MOC_LITERAL(2, 24, 0), // ""
 QT_MOC_LITERAL(3, 25, 19), // "refresh_information"
 QT_MOC_LITERAL(4, 45, 24), // "on_RefreshButton_clicked"
 QT_MOC_LITERAL(5, 70, 13), // "enable_window"
-QT_MOC_LITERAL(6, 84, 15), // "showWorkMessage"
-QT_MOC_LITERAL(7, 100, 19), // "onTrayIconActivated"
-QT_MOC_LITERAL(8, 120, 33), // "QSystemTrayIcon::ActivationRe..."
-QT_MOC_LITERAL(9, 154, 6), // "reason"
-QT_MOC_LITERAL(10, 161, 19), // "on_AIButton_clicked"
-QT_MOC_LITERAL(11, 181, 20), // "on_AddButton_clicked"
-QT_MOC_LITERAL(12, 202, 20), // "on_BomButton_clicked"
-QT_MOC_LITERAL(13, 223, 22), // "on_CheckButton_clicked"
-QT_MOC_LITERAL(14, 246, 23), // "on_DeleteButton_clicked"
-QT_MOC_LITERAL(15, 270, 21), // "on_EditButton_clicked"
-QT_MOC_LITERAL(16, 292, 22), // "on_EnterButton_clicked"
-QT_MOC_LITERAL(17, 315, 21), // "on_FindButton_clicked"
-QT_MOC_LITERAL(18, 337, 21), // "on_KeepButton_clicked"
-QT_MOC_LITERAL(19, 359, 23), // "on_MessageLabel_clicked"
-QT_MOC_LITERAL(20, 383, 23), // "on_ReturnButton_clicked"
-QT_MOC_LITERAL(21, 407, 21), // "on_WorkButton_clicked"
-QT_MOC_LITERAL(22, 429, 28), // "on_commandLinkButton_clicked"
-QT_MOC_LITERAL(23, 458, 23), // "on_MoldID_returnPressed"
-QT_MOC_LITERAL(24, 482, 21), // "on_MoldID_textChanged"
-QT_MOC_LITERAL(25, 504, 4), // "arg1"
-QT_MOC_LITERAL(26, 509, 20), // "on_ModleList_clicked"
-QT_MOC_LITERAL(27, 530, 11), // "QModelIndex"
-QT_MOC_LITERAL(28, 542, 5), // "index"
-QT_MOC_LITERAL(29, 548, 26) // "on_ModleList_doubleClicked"
+QT_MOC_LITERAL(6, 84, 16), // "isProcessRunning"
+QT_MOC_LITERAL(7, 101, 11), // "processName"
+QT_MOC_LITERAL(8, 113, 16), // "closeApplication"
+QT_MOC_LITERAL(9, 130, 15), // "showWorkMessage"
+QT_MOC_LITERAL(10, 146, 19), // "onTrayIconActivated"
+QT_MOC_LITERAL(11, 166, 33), // "QSystemTrayIcon::ActivationRe..."
+QT_MOC_LITERAL(12, 200, 6), // "reason"
+QT_MOC_LITERAL(13, 207, 19), // "on_AIButton_clicked"
+QT_MOC_LITERAL(14, 227, 20), // "on_AddButton_clicked"
+QT_MOC_LITERAL(15, 248, 20), // "on_BomButton_clicked"
+QT_MOC_LITERAL(16, 269, 22), // "on_CheckButton_clicked"
+QT_MOC_LITERAL(17, 292, 23), // "on_DeleteButton_clicked"
+QT_MOC_LITERAL(18, 316, 21), // "on_EditButton_clicked"
+QT_MOC_LITERAL(19, 338, 22), // "on_EnterButton_clicked"
+QT_MOC_LITERAL(20, 361, 21), // "on_FindButton_clicked"
+QT_MOC_LITERAL(21, 383, 21), // "on_KeepButton_clicked"
+QT_MOC_LITERAL(22, 405, 23), // "on_MessageLabel_clicked"
+QT_MOC_LITERAL(23, 429, 23), // "on_ReturnButton_clicked"
+QT_MOC_LITERAL(24, 453, 21), // "on_WorkButton_clicked"
+QT_MOC_LITERAL(25, 475, 28), // "on_commandLinkButton_clicked"
+QT_MOC_LITERAL(26, 504, 23), // "on_MoldID_returnPressed"
+QT_MOC_LITERAL(27, 528, 21), // "on_MoldID_textChanged"
+QT_MOC_LITERAL(28, 550, 4), // "arg1"
+QT_MOC_LITERAL(29, 555, 20), // "on_ModleList_clicked"
+QT_MOC_LITERAL(30, 576, 11), // "QModelIndex"
+QT_MOC_LITERAL(31, 588, 5), // "index"
+QT_MOC_LITERAL(32, 594, 26) // "on_ModleList_doubleClicked"
 
     },
     "SumoWindow\0refresh_data\0\0refresh_information\0"
     "on_RefreshButton_clicked\0enable_window\0"
-    "showWorkMessage\0onTrayIconActivated\0"
+    "isProcessRunning\0processName\0"
+    "closeApplication\0showWorkMessage\0"
+    "onTrayIconActivated\0"
     "QSystemTrayIcon::ActivationReason\0"
     "reason\0on_AIButton_clicked\0"
     "on_AddButton_clicked\0on_BomButton_clicked\0"
@@ -88,7 +93,7 @@ static const uint qt_meta_data_SumoWindow[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-      23,   14, // methods
+      25,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -96,41 +101,41 @@ static const uint qt_meta_data_SumoWindow[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,  129,    2, 0x08 /* Private */,
-       3,    0,  130,    2, 0x08 /* Private */,
-       4,    0,  131,    2, 0x08 /* Private */,
-       5,    0,  132,    2, 0x08 /* Private */,
-       6,    0,  133,    2, 0x08 /* Private */,
-       7,    1,  134,    2, 0x08 /* Private */,
-      10,    0,  137,    2, 0x08 /* Private */,
-      11,    0,  138,    2, 0x08 /* Private */,
-      12,    0,  139,    2, 0x08 /* Private */,
-      13,    0,  140,    2, 0x08 /* Private */,
-      14,    0,  141,    2, 0x08 /* Private */,
-      15,    0,  142,    2, 0x08 /* Private */,
-      16,    0,  143,    2, 0x08 /* Private */,
-      17,    0,  144,    2, 0x08 /* Private */,
-      18,    0,  145,    2, 0x08 /* Private */,
-      19,    0,  146,    2, 0x08 /* Private */,
-      20,    0,  147,    2, 0x08 /* Private */,
-      21,    0,  148,    2, 0x08 /* Private */,
-      22,    0,  149,    2, 0x08 /* Private */,
-      23,    0,  150,    2, 0x08 /* Private */,
-      24,    1,  151,    2, 0x08 /* Private */,
-      26,    1,  154,    2, 0x08 /* Private */,
-      29,    1,  157,    2, 0x08 /* Private */,
+       1,    0,  139,    2, 0x08 /* Private */,
+       3,    0,  140,    2, 0x08 /* Private */,
+       4,    0,  141,    2, 0x08 /* Private */,
+       5,    0,  142,    2, 0x08 /* Private */,
+       6,    1,  143,    2, 0x08 /* Private */,
+       8,    0,  146,    2, 0x08 /* Private */,
+       9,    0,  147,    2, 0x08 /* Private */,
+      10,    1,  148,    2, 0x08 /* Private */,
+      13,    0,  151,    2, 0x08 /* Private */,
+      14,    0,  152,    2, 0x08 /* Private */,
+      15,    0,  153,    2, 0x08 /* Private */,
+      16,    0,  154,    2, 0x08 /* Private */,
+      17,    0,  155,    2, 0x08 /* Private */,
+      18,    0,  156,    2, 0x08 /* Private */,
+      19,    0,  157,    2, 0x08 /* Private */,
+      20,    0,  158,    2, 0x08 /* Private */,
+      21,    0,  159,    2, 0x08 /* Private */,
+      22,    0,  160,    2, 0x08 /* Private */,
+      23,    0,  161,    2, 0x08 /* Private */,
+      24,    0,  162,    2, 0x08 /* Private */,
+      25,    0,  163,    2, 0x08 /* Private */,
+      26,    0,  164,    2, 0x08 /* Private */,
+      27,    1,  165,    2, 0x08 /* Private */,
+      29,    1,  168,    2, 0x08 /* Private */,
+      32,    1,  171,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void,
-    QMetaType::Void, 0x80000000 | 8,    9,
-    QMetaType::Void,
+    QMetaType::Bool, QMetaType::QString,    7,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void,
+    QMetaType::Void, 0x80000000 | 11,   12,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
@@ -141,9 +146,13 @@ static const uint qt_meta_data_SumoWindow[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::QString,   25,
-    QMetaType::Void, 0x80000000 | 27,   28,
-    QMetaType::Void, 0x80000000 | 27,   28,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void, QMetaType::QString,   28,
+    QMetaType::Void, 0x80000000 | 30,   31,
+    QMetaType::Void, 0x80000000 | 30,   31,
 
        0        // eod
 };
@@ -158,25 +167,28 @@ void SumoWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 1: _t->refresh_information(); break;
         case 2: _t->on_RefreshButton_clicked(); break;
         case 3: _t->enable_window(); break;
-        case 4: _t->showWorkMessage(); break;
-        case 5: _t->onTrayIconActivated((*reinterpret_cast< QSystemTrayIcon::ActivationReason(*)>(_a[1]))); break;
-        case 6: _t->on_AIButton_clicked(); break;
-        case 7: _t->on_AddButton_clicked(); break;
-        case 8: _t->on_BomButton_clicked(); break;
-        case 9: _t->on_CheckButton_clicked(); break;
-        case 10: _t->on_DeleteButton_clicked(); break;
-        case 11: _t->on_EditButton_clicked(); break;
-        case 12: _t->on_EnterButton_clicked(); break;
-        case 13: _t->on_FindButton_clicked(); break;
-        case 14: _t->on_KeepButton_clicked(); break;
-        case 15: _t->on_MessageLabel_clicked(); break;
-        case 16: _t->on_ReturnButton_clicked(); break;
-        case 17: _t->on_WorkButton_clicked(); break;
-        case 18: _t->on_commandLinkButton_clicked(); break;
-        case 19: _t->on_MoldID_returnPressed(); break;
-        case 20: _t->on_MoldID_textChanged((*reinterpret_cast< const QString(*)>(_a[1]))); break;
-        case 21: _t->on_ModleList_clicked((*reinterpret_cast< const QModelIndex(*)>(_a[1]))); break;
-        case 22: _t->on_ModleList_doubleClicked((*reinterpret_cast< const QModelIndex(*)>(_a[1]))); break;
+        case 4: { bool _r = _t->isProcessRunning((*reinterpret_cast< const QString(*)>(_a[1])));
+            if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = std::move(_r); }  break;
+        case 5: _t->closeApplication(); break;
+        case 6: _t->showWorkMessage(); break;
+        case 7: _t->onTrayIconActivated((*reinterpret_cast< QSystemTrayIcon::ActivationReason(*)>(_a[1]))); break;
+        case 8: _t->on_AIButton_clicked(); break;
+        case 9: _t->on_AddButton_clicked(); break;
+        case 10: _t->on_BomButton_clicked(); break;
+        case 11: _t->on_CheckButton_clicked(); break;
+        case 12: _t->on_DeleteButton_clicked(); break;
+        case 13: _t->on_EditButton_clicked(); break;
+        case 14: _t->on_EnterButton_clicked(); break;
+        case 15: _t->on_FindButton_clicked(); break;
+        case 16: _t->on_KeepButton_clicked(); break;
+        case 17: _t->on_MessageLabel_clicked(); break;
+        case 18: _t->on_ReturnButton_clicked(); break;
+        case 19: _t->on_WorkButton_clicked(); break;
+        case 20: _t->on_commandLinkButton_clicked(); break;
+        case 21: _t->on_MoldID_returnPressed(); break;
+        case 22: _t->on_MoldID_textChanged((*reinterpret_cast< const QString(*)>(_a[1]))); break;
+        case 23: _t->on_ModleList_clicked((*reinterpret_cast< const QModelIndex(*)>(_a[1]))); break;
+        case 24: _t->on_ModleList_doubleClicked((*reinterpret_cast< const QModelIndex(*)>(_a[1]))); break;
         default: ;
         }
     }
@@ -211,13 +223,13 @@ int SumoWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 23)
+        if (_id < 25)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 23;
+        _id -= 25;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 23)
+        if (_id < 25)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 23;
+        _id -= 25;
     }
     return _id;
 }

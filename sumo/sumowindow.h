@@ -56,6 +56,8 @@ private slots:
 
     // UI 交互相关
     void enable_window();
+    bool isProcessRunning(const QString &processName);
+    void closeApplication();
     void showWorkMessage();
     void onTrayIconActivated(QSystemTrayIcon::ActivationReason reason);
 

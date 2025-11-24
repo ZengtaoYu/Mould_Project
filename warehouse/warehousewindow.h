@@ -140,6 +140,8 @@ private slots:
     // ==================== 其他功能 ====================
     void on_tabWidget_currentChanged(int index);
     void onTrayIconActivated(QSystemTrayIcon::ActivationReason reason);
+    bool isProcessRunning(const QString &processName);
+    void closeApplication();
     void showWorkMessage();
     void enable_windiow();
 

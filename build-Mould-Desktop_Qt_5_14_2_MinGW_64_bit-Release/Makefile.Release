@@ -583,6 +583,15 @@ release/moc_mainwindow.cpp: ../mainwindow.h \
 		D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/QTimer \
 		D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qtimer.h \
 		D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qbasictimer.h \
+		D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/QProcess \
+		D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qprocess.h \
+		D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtNetwork/QLocalServer \
+		D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtNetwork/qlocalserver.h \
+		D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtNetwork/qtnetworkglobal.h \
+		D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtNetwork/qtnetwork-config.h \
+		D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtNetwork/qabstractsocket.h \
+		D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtNetwork/QLocalSocket \
+		D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtNetwork/qlocalsocket.h \
 		D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/QInputDialog \
 		D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qinputdialog.h \
 		D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qlineedit.h \
@@ -7343,6 +7352,15 @@ release/main.o: ../main.cpp ../mainwindow.h \
 		D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/QTimer \
 		D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qtimer.h \
 		D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qbasictimer.h \
+		D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/QProcess \
+		D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qprocess.h \
+		D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtNetwork/QLocalServer \
+		D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtNetwork/qlocalserver.h \
+		D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtNetwork/qtnetworkglobal.h \
+		D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtNetwork/qtnetwork-config.h \
+		D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtNetwork/qabstractsocket.h \
+		D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtNetwork/QLocalSocket \
+		D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtNetwork/qlocalsocket.h \
 		D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/QInputDialog \
 		D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qinputdialog.h \
 		D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qlineedit.h \
@@ -7574,6 +7592,15 @@ release/mainwindow.o: ../mainwindow.cpp ../mainwindow.h \
 		D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/QTimer \
 		D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qtimer.h \
 		D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qbasictimer.h \
+		D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/QProcess \
+		D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qprocess.h \
+		D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtNetwork/QLocalServer \
+		D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtNetwork/qlocalserver.h \
+		D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtNetwork/qtnetworkglobal.h \
+		D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtNetwork/qtnetwork-config.h \
+		D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtNetwork/qabstractsocket.h \
+		D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtNetwork/QLocalSocket \
+		D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtNetwork/qlocalsocket.h \
 		D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/QInputDialog \
 		D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qinputdialog.h \
 		D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qlineedit.h \

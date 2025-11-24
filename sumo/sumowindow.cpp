@@ -69,7 +69,7 @@ SumoWindow::SumoWindow(QVariant authority, QVariant name, QWidget *mainWin, QWid
     QAction *showAction = menu->addAction("打开程序");
     QAction *closeAction = menu->addAction("关闭程序");
     trayIcon->setContextMenu(menu);
-    connect(closeAction, &QAction::triggered, this, &QApplication::quit);
+    connect(closeAction, &QAction::triggered, this, &SumoWindow::closeApplication);
     connect(showAction, &QAction::triggered, this, &SumoWindow::show);
     connect(workAction, &QAction::triggered, this, &SumoWindow::showWorkMessage);
     connect(trayIcon, &QSystemTrayIcon::activated, this, &SumoWindow::onTrayIconActivated);
@@ -305,6 +305,21 @@ void SumoWindow::on_RefreshButton_clicked() {
 
 void SumoWindow::enable_window() {
     ui->centralwidget->setEnabled(true);
+}
+
+bool SumoWindow::isProcessRunning(const QString &processName) {
+    QProcess process;
+    process.start("tasklist");
+    process.waitForFinished();
+    QString output = process.readAllStandardOutput();
+    return output.contains(processName, Qt::CaseInsensitive);
+}
+
+void SumoWindow::closeApplication() {
+    QApplication::quit();
+    if(isProcessRunning("email.exe")) {
+        QProcess::execute("taskkill", QStringList() << "/F" << "/IM" << "email.exe");
+    }
 }
 
 void SumoWindow::showWorkMessage() {
