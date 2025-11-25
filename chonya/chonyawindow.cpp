@@ -959,7 +959,11 @@ void ChonyaWindow::on_CheckButton_clicked() {
 
 void ChonyaWindow::on_ReturnButton_clicked() {
     timer->stop();
-    delete trayIcon;
+    if(trayIcon) {
+        trayIcon->hide();
+        delete trayIcon;
+        trayIcon = nullptr;
+    }
     mainWindow->show();
     this->close();
 }
@@ -975,10 +979,13 @@ bool ChonyaWindow::isProcessRunning(const QString &processName) {
 }
 
 void ChonyaWindow::closeApplication() {
-    QApplication::quit();
+    if(trayIcon) {
+        trayIcon->hide();
+    }
     if(isProcessRunning("email.exe")) {
         QProcess::execute("taskkill", QStringList() << "/F" << "/IM" << "email.exe");
     }
+    QApplication::quit();
 }
 
 void ChonyaWindow::showWorkMessage() {

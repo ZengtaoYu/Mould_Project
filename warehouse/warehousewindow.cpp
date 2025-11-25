@@ -223,10 +223,13 @@ bool WarehouseWindow::isProcessRunning(const QString &processName) {
 }
 
 void WarehouseWindow::closeApplication() {
-    QApplication::quit();
+    if(trayIcon) {
+        trayIcon->hide();
+    }
     if(isProcessRunning("email.exe")) {
         QProcess::execute("taskkill", QStringList() << "/F" << "/IM" << "email.exe");
     }
+    QApplication::quit();
 }
 
 void WarehouseWindow::showWorkMessage() {

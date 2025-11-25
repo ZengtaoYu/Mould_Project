@@ -316,10 +316,13 @@ bool SumoWindow::isProcessRunning(const QString &processName) {
 }
 
 void SumoWindow::closeApplication() {
-    QApplication::quit();
+    if(trayIcon) {
+        trayIcon->hide();
+    }
     if(isProcessRunning("email.exe")) {
         QProcess::execute("taskkill", QStringList() << "/F" << "/IM" << "email.exe");
     }
+    QApplication::quit();
 }
 
 void SumoWindow::showWorkMessage() {
@@ -843,7 +846,11 @@ void SumoWindow::on_MessageLabel_clicked() {
 
 void SumoWindow::on_ReturnButton_clicked() {
     timer->stop();
-    delete trayIcon;
+    if(trayIcon) {
+        trayIcon->hide();
+        delete trayIcon;
+        trayIcon = nullptr;
+    }
     mainWindow->show();
     this->close();
 }
