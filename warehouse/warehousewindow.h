@@ -183,6 +183,7 @@ private:
     // ==================== 用户权限和配置 ====================
     QVariant authvalue_;  // 权限值
     bool curr_auth;  // 当前权限状态
+    bool empty_contrl;
     QVariant namevalue_;  // 用户名值
     QString curr_name;  // 当前用户名
     QXlsx::Format Song12C;  // Excel格式设置

@@ -682,7 +682,7 @@ void WarehouseWindow::startProgressiveLoad(const QString &moldFilter, const QStr
     // ========== 第四步：创建进度对话框 ==========
     totalRecordsToLoad = pendingRecords1.size() + pendingRecords2.size() + 2;
     loadedRecordsCount = 0;
-    if(totalRecordsToLoad > 1000) { // 只有数据量较大时才显示进度条
+    if(totalRecordsToLoad > 6000) { // 只有数据量较大时才显示进度条
         progressDialog = new QProgressDialog("正在加载数据...", "取消", 0, totalRecordsToLoad, this);
         progressDialog->setWindowModality(Qt::WindowModal);
         progressDialog->setMinimumDuration(0);
@@ -720,7 +720,7 @@ void WarehouseWindow::finishDataLoading() {
     // 恢复配置选择（如果有）
     QSettings config("userconfig.ini", QSettings::IniFormat);
     if(!config.value("SELECTIONCONFIG/Mold").toString().isEmpty() &&
-        !config.value("SELECTIONCONFIG/Spare").toString().isEmpty()) {
+        !config.value("SELECTIONCONFIG/Spare").toString().isEmpty() && !empty_contrl) {
         QStandardItemModel *model;
         if(config.value("SELECTIONCONFIG/Select1").toString() == "冲压") {
             model = qobject_cast<QStandardItemModel *>(ui->CyView->model());
@@ -785,6 +785,7 @@ void WarehouseWindow::finishDataLoading() {
             }
         }
     }
+    empty_contrl = false;
 }
 
 void WarehouseWindow::on_FindButton_clicked() {
@@ -838,6 +839,7 @@ void WarehouseWindow::on_MoldEdit_returnPressed() {
 
 void WarehouseWindow::on_MoldEdit_textChanged(const QString &arg1) {
     ui->SpareEdit->clear();
+    empty_contrl = true;
     if(arg1.isEmpty()) {
         // 当文本为空时，加载所有数据（使用分批加载），根据当前标签页决定加载哪个视图
         int currentTab = ui->tabWidget->currentIndex();
