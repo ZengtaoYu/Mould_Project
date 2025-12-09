@@ -85,6 +85,8 @@ private slots:
     void finishDataLoading();  // 完成数据加载后的处理
     void startProgressiveLoad(const QString &moldFilter = "", const QString &spareFilter = "",
         int tabIndex = -1);  // 启动分批加载
+    void startProgressiveFind(const QString &moldFilter = "", const QString &spareFilter = "",
+        int tabIndex = -1);  // 启动分批加载
     void loadBatchCyView();  // 分批加载 CyView
     void loadBatchCxView();  // 分批加载 CxView
 

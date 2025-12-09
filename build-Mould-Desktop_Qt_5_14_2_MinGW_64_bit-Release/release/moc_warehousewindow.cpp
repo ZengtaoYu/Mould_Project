@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_WarehouseWindow_t {
-    QByteArrayData data[62];
-    char stringdata0[1251];
+    QByteArrayData data[63];
+    char stringdata0[1272];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -43,68 +43,70 @@ QT_MOC_LITERAL(7, 98, 20), // "startProgressiveLoad"
 QT_MOC_LITERAL(8, 119, 10), // "moldFilter"
 QT_MOC_LITERAL(9, 130, 11), // "spareFilter"
 QT_MOC_LITERAL(10, 142, 8), // "tabIndex"
-QT_MOC_LITERAL(11, 151, 15), // "loadBatchCyView"
-QT_MOC_LITERAL(12, 167, 15), // "loadBatchCxView"
-QT_MOC_LITERAL(13, 183, 20), // "on_AddButton_clicked"
-QT_MOC_LITERAL(14, 204, 20), // "on_OutButton_clicked"
-QT_MOC_LITERAL(15, 225, 22), // "on_EnterButton_clicked"
-QT_MOC_LITERAL(16, 248, 21), // "on_EditButton_clicked"
-QT_MOC_LITERAL(17, 270, 23), // "on_DeleteButton_clicked"
-QT_MOC_LITERAL(18, 294, 21), // "on_FindButton_clicked"
-QT_MOC_LITERAL(19, 316, 24), // "on_RefreshButton_clicked"
-QT_MOC_LITERAL(20, 341, 22), // "on_CheckButton_clicked"
-QT_MOC_LITERAL(21, 364, 23), // "on_ManageButton_clicked"
-QT_MOC_LITERAL(22, 388, 24), // "on_ProductButton_clicked"
-QT_MOC_LITERAL(23, 413, 21), // "on_WorkButton_clicked"
-QT_MOC_LITERAL(24, 435, 19), // "on_AIButton_clicked"
-QT_MOC_LITERAL(25, 455, 23), // "on_MessageLabel_clicked"
-QT_MOC_LITERAL(26, 479, 23), // "on_ReturnButton_clicked"
-QT_MOC_LITERAL(27, 503, 28), // "on_commandLinkButton_clicked"
-QT_MOC_LITERAL(28, 532, 20), // "on_BomButton_clicked"
-QT_MOC_LITERAL(29, 553, 25), // "on_MoldEdit_returnPressed"
-QT_MOC_LITERAL(30, 579, 26), // "on_SpareEdit_returnPressed"
-QT_MOC_LITERAL(31, 606, 23), // "on_MoldEdit_textChanged"
-QT_MOC_LITERAL(32, 630, 4), // "arg1"
-QT_MOC_LITERAL(33, 635, 17), // "on_CyView_clicked"
-QT_MOC_LITERAL(34, 653, 11), // "QModelIndex"
-QT_MOC_LITERAL(35, 665, 5), // "index"
-QT_MOC_LITERAL(36, 671, 17), // "on_CxView_clicked"
-QT_MOC_LITERAL(37, 689, 21), // "on_OutButtonc_clicked"
-QT_MOC_LITERAL(38, 711, 23), // "on_EnterButtonc_clicked"
-QT_MOC_LITERAL(39, 735, 24), // "on_DeleteButtonc_clicked"
-QT_MOC_LITERAL(40, 760, 22), // "on_FindButtonc_clicked"
-QT_MOC_LITERAL(41, 783, 25), // "on_RefreshButtonc_clicked"
-QT_MOC_LITERAL(42, 809, 24), // "on_ChangeButtonc_clicked"
-QT_MOC_LITERAL(43, 834, 22), // "on_WorkButtonc_clicked"
-QT_MOC_LITERAL(44, 857, 20), // "on_AIButtonc_clicked"
-QT_MOC_LITERAL(45, 878, 24), // "on_MessageLabelc_clicked"
-QT_MOC_LITERAL(46, 903, 24), // "on_ReturnButtonc_clicked"
-QT_MOC_LITERAL(47, 928, 29), // "on_commandLinkButtonc_clicked"
-QT_MOC_LITERAL(48, 958, 26), // "on_MoldEditc_returnPressed"
-QT_MOC_LITERAL(49, 985, 30), // "on_MaterialEditc_returnPressed"
-QT_MOC_LITERAL(50, 1016, 24), // "on_MoldEditc_textChanged"
-QT_MOC_LITERAL(51, 1041, 21), // "on_ModleList1_clicked"
-QT_MOC_LITERAL(52, 1063, 21), // "on_ModleList2_clicked"
-QT_MOC_LITERAL(53, 1085, 27), // "on_tabWidget_currentChanged"
-QT_MOC_LITERAL(54, 1113, 19), // "onTrayIconActivated"
-QT_MOC_LITERAL(55, 1133, 33), // "QSystemTrayIcon::ActivationRe..."
-QT_MOC_LITERAL(56, 1167, 6), // "reason"
-QT_MOC_LITERAL(57, 1174, 16), // "isProcessRunning"
-QT_MOC_LITERAL(58, 1191, 11), // "processName"
-QT_MOC_LITERAL(59, 1203, 16), // "closeApplication"
-QT_MOC_LITERAL(60, 1220, 15), // "showWorkMessage"
-QT_MOC_LITERAL(61, 1236, 14) // "enable_windiow"
+QT_MOC_LITERAL(11, 151, 20), // "startProgressiveFind"
+QT_MOC_LITERAL(12, 172, 15), // "loadBatchCyView"
+QT_MOC_LITERAL(13, 188, 15), // "loadBatchCxView"
+QT_MOC_LITERAL(14, 204, 20), // "on_AddButton_clicked"
+QT_MOC_LITERAL(15, 225, 20), // "on_OutButton_clicked"
+QT_MOC_LITERAL(16, 246, 22), // "on_EnterButton_clicked"
+QT_MOC_LITERAL(17, 269, 21), // "on_EditButton_clicked"
+QT_MOC_LITERAL(18, 291, 23), // "on_DeleteButton_clicked"
+QT_MOC_LITERAL(19, 315, 21), // "on_FindButton_clicked"
+QT_MOC_LITERAL(20, 337, 24), // "on_RefreshButton_clicked"
+QT_MOC_LITERAL(21, 362, 22), // "on_CheckButton_clicked"
+QT_MOC_LITERAL(22, 385, 23), // "on_ManageButton_clicked"
+QT_MOC_LITERAL(23, 409, 24), // "on_ProductButton_clicked"
+QT_MOC_LITERAL(24, 434, 21), // "on_WorkButton_clicked"
+QT_MOC_LITERAL(25, 456, 19), // "on_AIButton_clicked"
+QT_MOC_LITERAL(26, 476, 23), // "on_MessageLabel_clicked"
+QT_MOC_LITERAL(27, 500, 23), // "on_ReturnButton_clicked"
+QT_MOC_LITERAL(28, 524, 28), // "on_commandLinkButton_clicked"
+QT_MOC_LITERAL(29, 553, 20), // "on_BomButton_clicked"
+QT_MOC_LITERAL(30, 574, 25), // "on_MoldEdit_returnPressed"
+QT_MOC_LITERAL(31, 600, 26), // "on_SpareEdit_returnPressed"
+QT_MOC_LITERAL(32, 627, 23), // "on_MoldEdit_textChanged"
+QT_MOC_LITERAL(33, 651, 4), // "arg1"
+QT_MOC_LITERAL(34, 656, 17), // "on_CyView_clicked"
+QT_MOC_LITERAL(35, 674, 11), // "QModelIndex"
+QT_MOC_LITERAL(36, 686, 5), // "index"
+QT_MOC_LITERAL(37, 692, 17), // "on_CxView_clicked"
+QT_MOC_LITERAL(38, 710, 21), // "on_OutButtonc_clicked"
+QT_MOC_LITERAL(39, 732, 23), // "on_EnterButtonc_clicked"
+QT_MOC_LITERAL(40, 756, 24), // "on_DeleteButtonc_clicked"
+QT_MOC_LITERAL(41, 781, 22), // "on_FindButtonc_clicked"
+QT_MOC_LITERAL(42, 804, 25), // "on_RefreshButtonc_clicked"
+QT_MOC_LITERAL(43, 830, 24), // "on_ChangeButtonc_clicked"
+QT_MOC_LITERAL(44, 855, 22), // "on_WorkButtonc_clicked"
+QT_MOC_LITERAL(45, 878, 20), // "on_AIButtonc_clicked"
+QT_MOC_LITERAL(46, 899, 24), // "on_MessageLabelc_clicked"
+QT_MOC_LITERAL(47, 924, 24), // "on_ReturnButtonc_clicked"
+QT_MOC_LITERAL(48, 949, 29), // "on_commandLinkButtonc_clicked"
+QT_MOC_LITERAL(49, 979, 26), // "on_MoldEditc_returnPressed"
+QT_MOC_LITERAL(50, 1006, 30), // "on_MaterialEditc_returnPressed"
+QT_MOC_LITERAL(51, 1037, 24), // "on_MoldEditc_textChanged"
+QT_MOC_LITERAL(52, 1062, 21), // "on_ModleList1_clicked"
+QT_MOC_LITERAL(53, 1084, 21), // "on_ModleList2_clicked"
+QT_MOC_LITERAL(54, 1106, 27), // "on_tabWidget_currentChanged"
+QT_MOC_LITERAL(55, 1134, 19), // "onTrayIconActivated"
+QT_MOC_LITERAL(56, 1154, 33), // "QSystemTrayIcon::ActivationRe..."
+QT_MOC_LITERAL(57, 1188, 6), // "reason"
+QT_MOC_LITERAL(58, 1195, 16), // "isProcessRunning"
+QT_MOC_LITERAL(59, 1212, 11), // "processName"
+QT_MOC_LITERAL(60, 1224, 16), // "closeApplication"
+QT_MOC_LITERAL(61, 1241, 15), // "showWorkMessage"
+QT_MOC_LITERAL(62, 1257, 14) // "enable_windiow"
 
     },
     "WarehouseWindow\0refresh_data\0\0"
     "refresh_datac\0refresh_information\0"
     "Product_Refresh\0finishDataLoading\0"
     "startProgressiveLoad\0moldFilter\0"
-    "spareFilter\0tabIndex\0loadBatchCyView\0"
-    "loadBatchCxView\0on_AddButton_clicked\0"
-    "on_OutButton_clicked\0on_EnterButton_clicked\0"
-    "on_EditButton_clicked\0on_DeleteButton_clicked\0"
-    "on_FindButton_clicked\0on_RefreshButton_clicked\0"
+    "spareFilter\0tabIndex\0startProgressiveFind\0"
+    "loadBatchCyView\0loadBatchCxView\0"
+    "on_AddButton_clicked\0on_OutButton_clicked\0"
+    "on_EnterButton_clicked\0on_EditButton_clicked\0"
+    "on_DeleteButton_clicked\0on_FindButton_clicked\0"
+    "on_RefreshButton_clicked\0"
     "on_CheckButton_clicked\0on_ManageButton_clicked\0"
     "on_ProductButton_clicked\0on_WorkButton_clicked\0"
     "on_AIButton_clicked\0on_MessageLabel_clicked\0"
@@ -141,7 +143,7 @@ static const uint qt_meta_data_WarehouseWindow[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-      54,   14, // methods
+      58,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -149,66 +151,74 @@ static const uint qt_meta_data_WarehouseWindow[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,  284,    2, 0x08 /* Private */,
-       3,    0,  285,    2, 0x08 /* Private */,
-       4,    0,  286,    2, 0x08 /* Private */,
-       5,    0,  287,    2, 0x08 /* Private */,
-       6,    0,  288,    2, 0x08 /* Private */,
-       7,    3,  289,    2, 0x08 /* Private */,
-       7,    2,  296,    2, 0x28 /* Private | MethodCloned */,
-       7,    1,  301,    2, 0x28 /* Private | MethodCloned */,
-       7,    0,  304,    2, 0x28 /* Private | MethodCloned */,
-      11,    0,  305,    2, 0x08 /* Private */,
-      12,    0,  306,    2, 0x08 /* Private */,
-      13,    0,  307,    2, 0x08 /* Private */,
-      14,    0,  308,    2, 0x08 /* Private */,
-      15,    0,  309,    2, 0x08 /* Private */,
-      16,    0,  310,    2, 0x08 /* Private */,
-      17,    0,  311,    2, 0x08 /* Private */,
-      18,    0,  312,    2, 0x08 /* Private */,
-      19,    0,  313,    2, 0x08 /* Private */,
-      20,    0,  314,    2, 0x08 /* Private */,
-      21,    0,  315,    2, 0x08 /* Private */,
-      22,    0,  316,    2, 0x08 /* Private */,
-      23,    0,  317,    2, 0x08 /* Private */,
-      24,    0,  318,    2, 0x08 /* Private */,
-      25,    0,  319,    2, 0x08 /* Private */,
-      26,    0,  320,    2, 0x08 /* Private */,
-      27,    0,  321,    2, 0x08 /* Private */,
-      28,    0,  322,    2, 0x08 /* Private */,
-      29,    0,  323,    2, 0x08 /* Private */,
-      30,    0,  324,    2, 0x08 /* Private */,
-      31,    1,  325,    2, 0x08 /* Private */,
-      33,    1,  328,    2, 0x08 /* Private */,
-      36,    1,  331,    2, 0x08 /* Private */,
-      37,    0,  334,    2, 0x08 /* Private */,
-      38,    0,  335,    2, 0x08 /* Private */,
-      39,    0,  336,    2, 0x08 /* Private */,
-      40,    0,  337,    2, 0x08 /* Private */,
-      41,    0,  338,    2, 0x08 /* Private */,
-      42,    0,  339,    2, 0x08 /* Private */,
-      43,    0,  340,    2, 0x08 /* Private */,
-      44,    0,  341,    2, 0x08 /* Private */,
-      45,    0,  342,    2, 0x08 /* Private */,
-      46,    0,  343,    2, 0x08 /* Private */,
-      47,    0,  344,    2, 0x08 /* Private */,
-      48,    0,  345,    2, 0x08 /* Private */,
-      49,    0,  346,    2, 0x08 /* Private */,
-      50,    1,  347,    2, 0x08 /* Private */,
-      51,    1,  350,    2, 0x08 /* Private */,
-      52,    1,  353,    2, 0x08 /* Private */,
-      53,    1,  356,    2, 0x08 /* Private */,
-      54,    1,  359,    2, 0x08 /* Private */,
-      57,    1,  362,    2, 0x08 /* Private */,
-      59,    0,  365,    2, 0x08 /* Private */,
-      60,    0,  366,    2, 0x08 /* Private */,
-      61,    0,  367,    2, 0x08 /* Private */,
+       1,    0,  304,    2, 0x08 /* Private */,
+       3,    0,  305,    2, 0x08 /* Private */,
+       4,    0,  306,    2, 0x08 /* Private */,
+       5,    0,  307,    2, 0x08 /* Private */,
+       6,    0,  308,    2, 0x08 /* Private */,
+       7,    3,  309,    2, 0x08 /* Private */,
+       7,    2,  316,    2, 0x28 /* Private | MethodCloned */,
+       7,    1,  321,    2, 0x28 /* Private | MethodCloned */,
+       7,    0,  324,    2, 0x28 /* Private | MethodCloned */,
+      11,    3,  325,    2, 0x08 /* Private */,
+      11,    2,  332,    2, 0x28 /* Private | MethodCloned */,
+      11,    1,  337,    2, 0x28 /* Private | MethodCloned */,
+      11,    0,  340,    2, 0x28 /* Private | MethodCloned */,
+      12,    0,  341,    2, 0x08 /* Private */,
+      13,    0,  342,    2, 0x08 /* Private */,
+      14,    0,  343,    2, 0x08 /* Private */,
+      15,    0,  344,    2, 0x08 /* Private */,
+      16,    0,  345,    2, 0x08 /* Private */,
+      17,    0,  346,    2, 0x08 /* Private */,
+      18,    0,  347,    2, 0x08 /* Private */,
+      19,    0,  348,    2, 0x08 /* Private */,
+      20,    0,  349,    2, 0x08 /* Private */,
+      21,    0,  350,    2, 0x08 /* Private */,
+      22,    0,  351,    2, 0x08 /* Private */,
+      23,    0,  352,    2, 0x08 /* Private */,
+      24,    0,  353,    2, 0x08 /* Private */,
+      25,    0,  354,    2, 0x08 /* Private */,
+      26,    0,  355,    2, 0x08 /* Private */,
+      27,    0,  356,    2, 0x08 /* Private */,
+      28,    0,  357,    2, 0x08 /* Private */,
+      29,    0,  358,    2, 0x08 /* Private */,
+      30,    0,  359,    2, 0x08 /* Private */,
+      31,    0,  360,    2, 0x08 /* Private */,
+      32,    1,  361,    2, 0x08 /* Private */,
+      34,    1,  364,    2, 0x08 /* Private */,
+      37,    1,  367,    2, 0x08 /* Private */,
+      38,    0,  370,    2, 0x08 /* Private */,
+      39,    0,  371,    2, 0x08 /* Private */,
+      40,    0,  372,    2, 0x08 /* Private */,
+      41,    0,  373,    2, 0x08 /* Private */,
+      42,    0,  374,    2, 0x08 /* Private */,
+      43,    0,  375,    2, 0x08 /* Private */,
+      44,    0,  376,    2, 0x08 /* Private */,
+      45,    0,  377,    2, 0x08 /* Private */,
+      46,    0,  378,    2, 0x08 /* Private */,
+      47,    0,  379,    2, 0x08 /* Private */,
+      48,    0,  380,    2, 0x08 /* Private */,
+      49,    0,  381,    2, 0x08 /* Private */,
+      50,    0,  382,    2, 0x08 /* Private */,
+      51,    1,  383,    2, 0x08 /* Private */,
+      52,    1,  386,    2, 0x08 /* Private */,
+      53,    1,  389,    2, 0x08 /* Private */,
+      54,    1,  392,    2, 0x08 /* Private */,
+      55,    1,  395,    2, 0x08 /* Private */,
+      58,    1,  398,    2, 0x08 /* Private */,
+      60,    0,  401,    2, 0x08 /* Private */,
+      61,    0,  402,    2, 0x08 /* Private */,
+      62,    0,  403,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void, QMetaType::QString, QMetaType::QString, QMetaType::Int,    8,    9,   10,
+    QMetaType::Void, QMetaType::QString, QMetaType::QString,    8,    9,
+    QMetaType::Void, QMetaType::QString,    8,
     QMetaType::Void,
     QMetaType::Void, QMetaType::QString, QMetaType::QString, QMetaType::Int,    8,    9,   10,
     QMetaType::Void, QMetaType::QString, QMetaType::QString,    8,    9,
@@ -234,9 +244,9 @@ static const uint qt_meta_data_WarehouseWindow[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::QString,   32,
-    QMetaType::Void, 0x80000000 | 34,   35,
-    QMetaType::Void, 0x80000000 | 34,   35,
+    QMetaType::Void, QMetaType::QString,   33,
+    QMetaType::Void, 0x80000000 | 35,   36,
+    QMetaType::Void, 0x80000000 | 35,   36,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
@@ -250,12 +260,12 @@ static const uint qt_meta_data_WarehouseWindow[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::QString,   32,
-    QMetaType::Void, 0x80000000 | 34,   35,
-    QMetaType::Void, 0x80000000 | 34,   35,
-    QMetaType::Void, QMetaType::Int,   35,
-    QMetaType::Void, 0x80000000 | 55,   56,
-    QMetaType::Bool, QMetaType::QString,   58,
+    QMetaType::Void, QMetaType::QString,   33,
+    QMetaType::Void, 0x80000000 | 35,   36,
+    QMetaType::Void, 0x80000000 | 35,   36,
+    QMetaType::Void, QMetaType::Int,   36,
+    QMetaType::Void, 0x80000000 | 56,   57,
+    QMetaType::Bool, QMetaType::QString,   59,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
@@ -278,52 +288,56 @@ void WarehouseWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int 
         case 6: _t->startProgressiveLoad((*reinterpret_cast< const QString(*)>(_a[1])),(*reinterpret_cast< const QString(*)>(_a[2]))); break;
         case 7: _t->startProgressiveLoad((*reinterpret_cast< const QString(*)>(_a[1]))); break;
         case 8: _t->startProgressiveLoad(); break;
-        case 9: _t->loadBatchCyView(); break;
-        case 10: _t->loadBatchCxView(); break;
-        case 11: _t->on_AddButton_clicked(); break;
-        case 12: _t->on_OutButton_clicked(); break;
-        case 13: _t->on_EnterButton_clicked(); break;
-        case 14: _t->on_EditButton_clicked(); break;
-        case 15: _t->on_DeleteButton_clicked(); break;
-        case 16: _t->on_FindButton_clicked(); break;
-        case 17: _t->on_RefreshButton_clicked(); break;
-        case 18: _t->on_CheckButton_clicked(); break;
-        case 19: _t->on_ManageButton_clicked(); break;
-        case 20: _t->on_ProductButton_clicked(); break;
-        case 21: _t->on_WorkButton_clicked(); break;
-        case 22: _t->on_AIButton_clicked(); break;
-        case 23: _t->on_MessageLabel_clicked(); break;
-        case 24: _t->on_ReturnButton_clicked(); break;
-        case 25: _t->on_commandLinkButton_clicked(); break;
-        case 26: _t->on_BomButton_clicked(); break;
-        case 27: _t->on_MoldEdit_returnPressed(); break;
-        case 28: _t->on_SpareEdit_returnPressed(); break;
-        case 29: _t->on_MoldEdit_textChanged((*reinterpret_cast< const QString(*)>(_a[1]))); break;
-        case 30: _t->on_CyView_clicked((*reinterpret_cast< const QModelIndex(*)>(_a[1]))); break;
-        case 31: _t->on_CxView_clicked((*reinterpret_cast< const QModelIndex(*)>(_a[1]))); break;
-        case 32: _t->on_OutButtonc_clicked(); break;
-        case 33: _t->on_EnterButtonc_clicked(); break;
-        case 34: _t->on_DeleteButtonc_clicked(); break;
-        case 35: _t->on_FindButtonc_clicked(); break;
-        case 36: _t->on_RefreshButtonc_clicked(); break;
-        case 37: _t->on_ChangeButtonc_clicked(); break;
-        case 38: _t->on_WorkButtonc_clicked(); break;
-        case 39: _t->on_AIButtonc_clicked(); break;
-        case 40: _t->on_MessageLabelc_clicked(); break;
-        case 41: _t->on_ReturnButtonc_clicked(); break;
-        case 42: _t->on_commandLinkButtonc_clicked(); break;
-        case 43: _t->on_MoldEditc_returnPressed(); break;
-        case 44: _t->on_MaterialEditc_returnPressed(); break;
-        case 45: _t->on_MoldEditc_textChanged((*reinterpret_cast< const QString(*)>(_a[1]))); break;
-        case 46: _t->on_ModleList1_clicked((*reinterpret_cast< const QModelIndex(*)>(_a[1]))); break;
-        case 47: _t->on_ModleList2_clicked((*reinterpret_cast< const QModelIndex(*)>(_a[1]))); break;
-        case 48: _t->on_tabWidget_currentChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 49: _t->onTrayIconActivated((*reinterpret_cast< QSystemTrayIcon::ActivationReason(*)>(_a[1]))); break;
-        case 50: { bool _r = _t->isProcessRunning((*reinterpret_cast< const QString(*)>(_a[1])));
+        case 9: _t->startProgressiveFind((*reinterpret_cast< const QString(*)>(_a[1])),(*reinterpret_cast< const QString(*)>(_a[2])),(*reinterpret_cast< int(*)>(_a[3]))); break;
+        case 10: _t->startProgressiveFind((*reinterpret_cast< const QString(*)>(_a[1])),(*reinterpret_cast< const QString(*)>(_a[2]))); break;
+        case 11: _t->startProgressiveFind((*reinterpret_cast< const QString(*)>(_a[1]))); break;
+        case 12: _t->startProgressiveFind(); break;
+        case 13: _t->loadBatchCyView(); break;
+        case 14: _t->loadBatchCxView(); break;
+        case 15: _t->on_AddButton_clicked(); break;
+        case 16: _t->on_OutButton_clicked(); break;
+        case 17: _t->on_EnterButton_clicked(); break;
+        case 18: _t->on_EditButton_clicked(); break;
+        case 19: _t->on_DeleteButton_clicked(); break;
+        case 20: _t->on_FindButton_clicked(); break;
+        case 21: _t->on_RefreshButton_clicked(); break;
+        case 22: _t->on_CheckButton_clicked(); break;
+        case 23: _t->on_ManageButton_clicked(); break;
+        case 24: _t->on_ProductButton_clicked(); break;
+        case 25: _t->on_WorkButton_clicked(); break;
+        case 26: _t->on_AIButton_clicked(); break;
+        case 27: _t->on_MessageLabel_clicked(); break;
+        case 28: _t->on_ReturnButton_clicked(); break;
+        case 29: _t->on_commandLinkButton_clicked(); break;
+        case 30: _t->on_BomButton_clicked(); break;
+        case 31: _t->on_MoldEdit_returnPressed(); break;
+        case 32: _t->on_SpareEdit_returnPressed(); break;
+        case 33: _t->on_MoldEdit_textChanged((*reinterpret_cast< const QString(*)>(_a[1]))); break;
+        case 34: _t->on_CyView_clicked((*reinterpret_cast< const QModelIndex(*)>(_a[1]))); break;
+        case 35: _t->on_CxView_clicked((*reinterpret_cast< const QModelIndex(*)>(_a[1]))); break;
+        case 36: _t->on_OutButtonc_clicked(); break;
+        case 37: _t->on_EnterButtonc_clicked(); break;
+        case 38: _t->on_DeleteButtonc_clicked(); break;
+        case 39: _t->on_FindButtonc_clicked(); break;
+        case 40: _t->on_RefreshButtonc_clicked(); break;
+        case 41: _t->on_ChangeButtonc_clicked(); break;
+        case 42: _t->on_WorkButtonc_clicked(); break;
+        case 43: _t->on_AIButtonc_clicked(); break;
+        case 44: _t->on_MessageLabelc_clicked(); break;
+        case 45: _t->on_ReturnButtonc_clicked(); break;
+        case 46: _t->on_commandLinkButtonc_clicked(); break;
+        case 47: _t->on_MoldEditc_returnPressed(); break;
+        case 48: _t->on_MaterialEditc_returnPressed(); break;
+        case 49: _t->on_MoldEditc_textChanged((*reinterpret_cast< const QString(*)>(_a[1]))); break;
+        case 50: _t->on_ModleList1_clicked((*reinterpret_cast< const QModelIndex(*)>(_a[1]))); break;
+        case 51: _t->on_ModleList2_clicked((*reinterpret_cast< const QModelIndex(*)>(_a[1]))); break;
+        case 52: _t->on_tabWidget_currentChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 53: _t->onTrayIconActivated((*reinterpret_cast< QSystemTrayIcon::ActivationReason(*)>(_a[1]))); break;
+        case 54: { bool _r = _t->isProcessRunning((*reinterpret_cast< const QString(*)>(_a[1])));
             if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = std::move(_r); }  break;
-        case 51: _t->closeApplication(); break;
-        case 52: _t->showWorkMessage(); break;
-        case 53: _t->enable_windiow(); break;
+        case 55: _t->closeApplication(); break;
+        case 56: _t->showWorkMessage(); break;
+        case 57: _t->enable_windiow(); break;
         default: ;
         }
     }
@@ -358,13 +372,13 @@ int WarehouseWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 54)
+        if (_id < 58)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 54;
+        _id -= 58;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 54)
+        if (_id < 58)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 54;
+        _id -= 58;
     }
     return _id;
 }

@@ -723,6 +723,178 @@ void WarehouseWindow::startProgressiveLoad(const QString &moldFilter, const QStr
     }
 }
 
+void WarehouseWindow::startProgressiveFind(const QString &moldFilter, const QString &spareFilter, int tabIndex) {
+    if(tabIndex == 2) {
+        // 停止之前的加载（如果正在进行）
+        if(loadTimer1) {
+            loadTimer1->stop();
+        }
+        // 关闭之前的进度对话框
+        if(progressDialog) {
+            progressDialog->close();
+            progressDialog->deleteLater();
+            progressDialog = nullptr;
+        }
+        // 清空待加载列表和映射
+        pendingRecords1.clear();
+        moldCountMap1.clear();
+        topItems1.clear();
+        QString sql;
+        QSqlQuery query;
+        QString countSql;
+        // ========== 第一步：查询模具计数映射==========
+        countSql = "select 模具编号, count(*) from chonya_message group by 模具编号";
+        query.prepare(countSql);
+        if(!query.exec()) {
+            QMessageBox::warning(this, "刷新数据", "备件数据查询失败：\n" + query.lastError().text(),
+                QMessageBox::Cancel);
+            isLoadingData = false;  // 查询失败时重置标志
+            return;
+        } else {
+            while(query.next()) {
+                QString moldId = query.value(0).toString();
+                int count = query.value(1).toInt();
+                moldCountMap1[moldId] = count;
+            }
+        }
+        // ========== 第二步：查询所有数据到待加载列表 ==========
+        // 查询 CyView 数据
+        if(!moldFilter.isEmpty() && !spareFilter.isEmpty()) {
+            sql = QString("select 模具编号,备件号,安全库存,总库存量,存放柜号 from chonya_message where 模具编号 like '%%1%' and 备件号 like '%%2%'").arg(
+                moldFilter).arg(spareFilter);
+        } else if(!moldFilter.isEmpty()) {
+            sql = QString("select 模具编号,备件号,安全库存,总库存量,存放柜号 from chonya_message where 模具编号 like '%%1%'").arg(
+                moldFilter);
+        }
+        if(!query.exec(sql)) {
+            QMessageBox::warning(this, "刷新数据", "备件数据查询失败：\n" + query.lastError().text(),
+                QMessageBox::Cancel);
+            isLoadingData = false;  // 查询失败时重置标志
+            return;
+        } else {
+            while(query.next()) {
+                pendingRecords1.append(query.record());
+            }
+        }
+        // ========== 第三步：初始化模型（两个视图都需要初始化）==========
+        model1 = new QStandardItemModel(this);
+        ui->CyView->setModel(model1);
+        model1->setHorizontalHeaderLabels({"备件号", "安全库存", "总库存量", "存放柜号"});
+        // 在加载前设置列宽
+        ui->CyView->header()->resizeSection(0, 220);
+        ui->CyView->header()->resizeSection(1, 115);
+        ui->CyView->header()->resizeSection(2, 115);
+        ui->CyView->header()->resizeSection(3, 115);
+        // ========== 第四步：创建进度对话框 ==========
+        totalRecordsToLoad = pendingRecords1.size() + 1;
+        loadedRecordsCount = 0;
+        if(totalRecordsToLoad > 6000) { // 只有数据量较大时才显示进度条
+            progressDialog = new QProgressDialog("正在加载数据...", "取消", 0, totalRecordsToLoad, this);
+            progressDialog->setWindowModality(Qt::WindowModal);
+            progressDialog->setMinimumDuration(0);
+            progressDialog->setValue(0);
+            connect(progressDialog, &QProgressDialog::canceled, this, [this]() {
+                if(loadTimer1) loadTimer1->stop();
+                isLoadingData = false;  // 用户取消时重置标志
+                qDebug() << "用户取消加载，重置 isLoadingData 标志";
+            });
+        }
+        // ========== 第五步：创建并启动定时器 ==========
+        if(!loadTimer1) {
+            loadTimer1 = new QTimer(this);
+            connect(loadTimer1, &QTimer::timeout, this, &WarehouseWindow::loadBatchCyView);
+        }
+        // 启动定时器，每10毫秒加载一批
+        if(!pendingRecords1.isEmpty()) {
+            loadTimer1->start(10);
+        }
+    } else if(tabIndex == 3) {
+        // 停止之前的加载（如果正在进行）
+        if(loadTimer2) {
+            loadTimer2->stop();
+        }
+        // 关闭之前的进度对话框
+        if(progressDialog) {
+            progressDialog->close();
+            progressDialog->deleteLater();
+            progressDialog = nullptr;
+        }
+        // 清空待加载列表和映射
+        pendingRecords2.clear();
+        moldCountMap2.clear();
+        topItems2.clear();
+        QString sql;
+        QSqlQuery query;
+        QString countSql;
+        // ========== 第一步：查询模具计数映射==========
+        countSql = "select 模具编号, count(*) from chengxing_message group by 模具编号";
+        query.prepare(countSql);
+        if(!query.exec()) {
+            QMessageBox::warning(this, "刷新数据", "备件数据查询失败：\n" + query.lastError().text(),
+                QMessageBox::Cancel);
+            isLoadingData = false;  // 查询失败时重置标志
+            return;
+        } else {
+            while(query.next()) {
+                QString moldId = query.value(0).toString();
+                int count = query.value(1).toInt();
+                moldCountMap2[moldId] = count;
+            }
+        }
+        // ========== 第二步：查询所有数据到待加载列表 ==========
+        // 查询 CxView 数据
+        if(!moldFilter.isEmpty() && !spareFilter.isEmpty()) {
+            sql = QString("select 模具编号,备件号,安全库存,总库存量,存放柜号 from chengxing_message where 模具编号 like '%%1%' and 备件号 like '%%2%'").arg(
+                moldFilter).arg(spareFilter);
+        } else if(!moldFilter.isEmpty()) {
+            sql = QString("select 模具编号,备件号,安全库存,总库存量,存放柜号 from chengxing_message where 模具编号 like '%%1%'").arg(
+                moldFilter);
+        }
+        if(!query.exec(sql)) {
+            QMessageBox::warning(this, "刷新数据", "备件数据查询失败：\n" + query.lastError().text(),
+                QMessageBox::Cancel);
+            isLoadingData = false;  // 查询失败时重置标志
+            return;
+        } else {
+            while(query.next()) {
+                pendingRecords2.append(query.record());
+            }
+        }
+        // ========== 第三步：初始化模型==========
+        model2 = new QStandardItemModel(this);
+        ui->CxView->setModel(model2);
+        model2->setHorizontalHeaderLabels({"备件号", "安全库存", "总库存量", "存放柜号"});
+        // 在加载前设置列宽
+        ui->CxView->header()->resizeSection(0, 220);
+        ui->CxView->header()->resizeSection(1, 115);
+        ui->CxView->header()->resizeSection(2, 115);
+        ui->CxView->header()->resizeSection(3, 115);
+        // ========== 第四步：创建进度对话框 ==========
+        totalRecordsToLoad = pendingRecords2.size() + 1;
+        loadedRecordsCount = 0;
+        if(totalRecordsToLoad > 6000) { // 只有数据量较大时才显示进度条
+            progressDialog = new QProgressDialog("正在加载数据...", "取消", 0, totalRecordsToLoad, this);
+            progressDialog->setWindowModality(Qt::WindowModal);
+            progressDialog->setMinimumDuration(0);
+            progressDialog->setValue(0);
+            connect(progressDialog, &QProgressDialog::canceled, this, [this]() {
+                if(loadTimer2) loadTimer2->stop();
+                isLoadingData = false;  // 用户取消时重置标志
+                qDebug() << "用户取消加载，重置 isLoadingData 标志";
+            });
+        }
+        // ========== 第五步：创建并启动定时器 ==========
+        if(!loadTimer2) {
+            loadTimer2 = new QTimer(this);
+            connect(loadTimer2, &QTimer::timeout, this, &WarehouseWindow::loadBatchCxView);
+        }
+        // 启动定时器，每10毫秒加载一批
+        if(!pendingRecords2.isEmpty()) {
+            loadTimer2->start(10);
+        }
+    }
+}
+
 void WarehouseWindow::finishDataLoading() {
     // 关闭进度对话框
     if(progressDialog) {
@@ -807,7 +979,7 @@ void WarehouseWindow::finishDataLoading() {
 void WarehouseWindow::on_FindButton_clicked() {
     // 使用分批加载函数，传入模具和备件过滤条件，以及当前标签页索引
     int currentTab = ui->tabWidget->currentIndex();
-    startProgressiveLoad(ui->MoldEdit->text(), ui->SpareEdit->text(), currentTab);
+    startProgressiveFind(ui->MoldEdit->text(), ui->SpareEdit->text(), currentTab);
     // 清空编辑框
     mold_id = "";
     spare_id = "";
@@ -823,7 +995,7 @@ void WarehouseWindow::on_FindButton_clicked() {
 void WarehouseWindow::on_SpareEdit_returnPressed() {
     // 使用分批加载函数，传入模具和备件过滤条件，以及当前标签页索引
     int currentTab = ui->tabWidget->currentIndex();
-    startProgressiveLoad(ui->MoldEdit->text(), ui->SpareEdit->text(), currentTab);
+    startProgressiveFind(ui->MoldEdit->text(), ui->SpareEdit->text(), currentTab);
     // 清空编辑框
     mold_id = "";
     spare_id = "";
@@ -839,7 +1011,7 @@ void WarehouseWindow::on_SpareEdit_returnPressed() {
 void WarehouseWindow::on_MoldEdit_returnPressed() {
     // 使用分批加载函数，只传入模具过滤条件，以及当前标签页索引
     int currentTab = ui->tabWidget->currentIndex();
-    startProgressiveLoad(ui->MoldEdit->text(), "", currentTab);
+    startProgressiveFind(ui->MoldEdit->text(), "", currentTab);
     // 清空编辑框
     mold_id = "";
     spare_id = "";
