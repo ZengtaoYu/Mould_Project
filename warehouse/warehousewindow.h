@@ -209,6 +209,7 @@ private:
     int batchSize;  // 每批加载数量
     int totalRecordsToLoad;  // 总记录数
     int loadedRecordsCount;  // 已加载记录数
+    bool isLoadingData;  // 数据加载标志，防止重复调用 refresh_data()
 };
 
 #endif // WAREHOUSEWINDOW_H

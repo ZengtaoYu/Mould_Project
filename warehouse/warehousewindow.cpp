@@ -143,6 +143,7 @@ WarehouseWindow::WarehouseWindow(QVariant authority, QVariant name, QWidget *mai
     progressDialog = nullptr;
     totalRecordsToLoad = 0;
     loadedRecordsCount = 0;
+    isLoadingData = false;  // 初始化数据加载标志
     ui->MoldEdit->setText(config.value("SELECTIONCONFIG/Mold").toString());
     refresh_datac();
     refresh_data();
@@ -342,6 +343,12 @@ void WarehouseWindow::refresh_information() {
 }
 
 void WarehouseWindow::refresh_data() {
+    // 防止重复调用
+    if(isLoadingData) {
+        qDebug() << "refresh_data() 已在执行中，跳过重复调用";
+        return;
+    }
+    isLoadingData = true;
     QSettings config("userconfig.ini", QSettings::IniFormat);
     if(config.value("SELECTIONCONFIG/Select1").toString() == "冲压") {
         ui->tabWidget->setCurrentIndex(2);
@@ -600,6 +607,7 @@ void WarehouseWindow::startProgressiveLoad(const QString &moldFilter, const QStr
     if(!query.exec()) {
         QMessageBox::warning(this, "刷新数据", "备件数据查询失败：\n" + query.lastError().text(),
             QMessageBox::Cancel);
+        isLoadingData = false;  // 查询失败时重置标志
         return;
     } else {
         while(query.next()) {
@@ -613,6 +621,7 @@ void WarehouseWindow::startProgressiveLoad(const QString &moldFilter, const QStr
     if(!query.exec()) {
         QMessageBox::warning(this, "刷新数据", "备件数据查询失败：\n" + query.lastError().text(),
             QMessageBox::Cancel);
+        isLoadingData = false;  // 查询失败时重置标志
         return;
     } else {
         while(query.next()) {
@@ -636,6 +645,7 @@ void WarehouseWindow::startProgressiveLoad(const QString &moldFilter, const QStr
     if(!query.exec(sql)) {
         QMessageBox::warning(this, "刷新数据", "备件数据查询失败：\n" + query.lastError().text(),
             QMessageBox::Cancel);
+        isLoadingData = false;  // 查询失败时重置标志
         return;
     } else {
         while(query.next()) {
@@ -656,6 +666,7 @@ void WarehouseWindow::startProgressiveLoad(const QString &moldFilter, const QStr
     if(!query.exec(sql)) {
         QMessageBox::warning(this, "刷新数据", "备件数据查询失败：\n" + query.lastError().text(),
             QMessageBox::Cancel);
+        isLoadingData = false;  // 查询失败时重置标志
         return;
     } else {
         while(query.next()) {
@@ -690,6 +701,8 @@ void WarehouseWindow::startProgressiveLoad(const QString &moldFilter, const QStr
         connect(progressDialog, &QProgressDialog::canceled, this, [this]() {
             if(loadTimer1) loadTimer1->stop();
             if(loadTimer2) loadTimer2->stop();
+            isLoadingData = false;  // 用户取消时重置标志
+            qDebug() << "用户取消加载，重置 isLoadingData 标志";
         });
     }
     // ========== 第五步：创建并启动定时器 ==========
@@ -786,6 +799,9 @@ void WarehouseWindow::finishDataLoading() {
         }
     }
     empty_contrl = false;
+    // 重置加载标志，允许下次调用 refresh_data()
+    isLoadingData = false;
+    qDebug() << "数据加载完成，重置 isLoadingData 标志";
 }
 
 void WarehouseWindow::on_FindButton_clicked() {
@@ -839,8 +855,8 @@ void WarehouseWindow::on_MoldEdit_returnPressed() {
 
 void WarehouseWindow::on_MoldEdit_textChanged(const QString &arg1) {
     ui->SpareEdit->clear();
-    empty_contrl = true;
     if(arg1.isEmpty()) {
+        empty_contrl = true;
         // 当文本为空时，加载所有数据（使用分批加载），根据当前标签页决定加载哪个视图
         int currentTab = ui->tabWidget->currentIndex();
         startProgressiveLoad("", "", currentTab);

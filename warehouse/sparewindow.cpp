@@ -12,12 +12,15 @@
 #include <QScroller>
 #include <QListView>
 #include <QFile>
+#include <QDebug>
 #include <QIODevice>
 #include <QStandardItem>
+#include <QDesktopServices>
+#include <QUrl>
 
 // 静态成员定义
 const QStringList SpareWindow::m_workTypeList = {"所有备件", "模具共用件", "前模零件号", "后模零件号", "滑块零件号", "顶针零件号"};
-
+const QStringList SpareWindow::m_workNumList = {"模具共用件合计数量", "前模零件号合计数量", "后模零件号合计数量", "滑块零件号合计数量", "顶针零件号合计数量"};
 const QColor SpareWindow::ColorDelegate::UNSELECTABLE_BACKGROUND_COLOR("#ffe0e0"); // 浅红色背景
 const QColor SpareWindow::ColorDelegate::SELECTABLE_BACKGROUND_COLOR("#e0ffe0");   // 浅绿色背景
 
@@ -256,11 +259,20 @@ void SpareWindow::RefreshData() {
                     workitem->setFlags(workitem->flags() & ~Qt::ItemIsSelectable);
                     m_model_1->appendRow(workitem);
                 }
+                int rowCountBeforeQuery = m_model_1->rowCount();
                 while(query.next()) {
                     if(!query.value(0).toString().isEmpty()) {
                         QStandardItem *modelitem = new QStandardItem(query.value(0).toString());
                         m_model_1->appendRow(modelitem);
                     }
+                }
+                // 如果该工站没有数据，显示提示
+                if(ui->ProductCombo_1->currentText() != "全部料号" && ui->WorkCombo->currentIndex() == 0
+                    && m_model_1->rowCount() == rowCountBeforeQuery) {
+                    QStandardItem *emptyItem = new QStandardItem("     该工站暂未\n     录入数据");
+                    emptyItem->setData(true, Qt::UserRole);
+                    emptyItem->setFlags(emptyItem->flags() & ~Qt::ItemIsSelectable);
+                    m_model_1->appendRow(emptyItem);
                 }
                 ui->PIDView_1->setModel(m_model_1);
                 if(!m_model_1->rowCount()) {
@@ -283,11 +295,20 @@ void SpareWindow::RefreshData() {
                     workitem->setFlags(workitem->flags() & ~Qt::ItemIsSelectable);
                     m_model_1->appendRow(workitem);
                 }
+                int rowCountBeforeQuery = m_model_1->rowCount();
                 while(query.next()) {
                     if(!query.value(0).toString().isEmpty()) {
                         QStandardItem *modelitem = new QStandardItem(query.value(0).toString());
                         m_model_1->appendRow(modelitem);
                     }
+                }
+                // 如果该工站没有数据，显示提示
+                if(ui->ProductCombo_1->currentText() != "全部料号" && ui->WorkCombo->currentIndex() == 0
+                    && m_model_1->rowCount() == rowCountBeforeQuery) {
+                    QStandardItem *emptyItem = new QStandardItem("     该工站暂未\n     录入数据");
+                    emptyItem->setData(true, Qt::UserRole);
+                    emptyItem->setFlags(emptyItem->flags() & ~Qt::ItemIsSelectable);
+                    m_model_1->appendRow(emptyItem);
                 }
                 ui->PIDView_1->setModel(m_model_1);
                 if(!m_model_1->rowCount()) {
@@ -310,11 +331,20 @@ void SpareWindow::RefreshData() {
                     workitem->setFlags(workitem->flags() & ~Qt::ItemIsSelectable);
                     m_model_1->appendRow(workitem);
                 }
+                int rowCountBeforeQuery = m_model_1->rowCount();
                 while(query.next()) {
                     if(!query.value(0).toString().isEmpty()) {
                         QStandardItem *modelitem = new QStandardItem(query.value(0).toString());
                         m_model_1->appendRow(modelitem);
                     }
+                }
+                // 如果该工站没有数据，显示提示
+                if(ui->ProductCombo_1->currentText() != "全部料号" && ui->WorkCombo->currentIndex() == 0
+                    && m_model_1->rowCount() == rowCountBeforeQuery) {
+                    QStandardItem *emptyItem = new QStandardItem("     该工站暂未\n     录入数据");
+                    emptyItem->setData(true, Qt::UserRole);
+                    emptyItem->setFlags(emptyItem->flags() & ~Qt::ItemIsSelectable);
+                    m_model_1->appendRow(emptyItem);
                 }
                 ui->PIDView_1->setModel(m_model_1);
                 if(!m_model_1->rowCount()) {
@@ -337,11 +367,20 @@ void SpareWindow::RefreshData() {
                     workitem->setFlags(workitem->flags() & ~Qt::ItemIsSelectable);
                     m_model_1->appendRow(workitem);
                 }
+                int rowCountBeforeQuery = m_model_1->rowCount();
                 while(query.next()) {
                     if(!query.value(0).toString().isEmpty()) {
                         QStandardItem *modelitem = new QStandardItem(query.value(0).toString());
                         m_model_1->appendRow(modelitem);
                     }
+                }
+                // 如果该工站没有数据，显示提示
+                if(ui->ProductCombo_1->currentText() != "全部料号" && ui->WorkCombo->currentIndex() == 0
+                    && m_model_1->rowCount() == rowCountBeforeQuery) {
+                    QStandardItem *emptyItem = new QStandardItem("     该工站暂未\n     录入数据");
+                    emptyItem->setData(true, Qt::UserRole);
+                    emptyItem->setFlags(emptyItem->flags() & ~Qt::ItemIsSelectable);
+                    m_model_1->appendRow(emptyItem);
                 }
                 ui->PIDView_1->setModel(m_model_1);
                 if(!m_model_1->rowCount()) {
@@ -364,11 +403,20 @@ void SpareWindow::RefreshData() {
                     workitem->setFlags(workitem->flags() & ~Qt::ItemIsSelectable);
                     m_model_1->appendRow(workitem);
                 }
+                int rowCountBeforeQuery = m_model_1->rowCount();
                 while(query.next()) {
                     if(!query.value(0).toString().isEmpty()) {
                         QStandardItem *modelitem = new QStandardItem(query.value(0).toString());
                         m_model_1->appendRow(modelitem);
                     }
+                }
+                // 如果该工站没有数据，显示提示
+                if(ui->ProductCombo_1->currentText() != "全部料号" && ui->WorkCombo->currentIndex() == 0
+                    && m_model_1->rowCount() == rowCountBeforeQuery) {
+                    QStandardItem *emptyItem = new QStandardItem("     该工站暂未\n     录入数据");
+                    emptyItem->setData(true, Qt::UserRole);
+                    emptyItem->setFlags(emptyItem->flags() & ~Qt::ItemIsSelectable);
+                    m_model_1->appendRow(emptyItem);
                 }
                 ui->PIDView_1->setModel(m_model_1);
                 if(!m_model_1->rowCount()) {
@@ -490,11 +538,20 @@ void SpareWindow::RefreshData() {
                     workitem->setFlags(workitem->flags() & ~Qt::ItemIsSelectable);
                     m_model_2->appendRow(workitem);
                 }
+                int rowCountBeforeQuery = m_model_2->rowCount();
                 while(query_2.next()) {
                     if(!query_2.value(0).toString().isEmpty()) {
                         QStandardItem *modelitem = new QStandardItem(query_2.value(0).toString());
                         m_model_2->appendRow(modelitem);
                     }
+                }
+                // 如果该工站没有数据，显示提示
+                if(ui->ProductCombo_2->currentText() != "全部料号" && ui->WorkCombo->currentIndex() == 0
+                    && m_model_2->rowCount() == rowCountBeforeQuery) {
+                    QStandardItem *emptyItem = new QStandardItem("     该工站暂未\n     录入数据");
+                    emptyItem->setData(true, Qt::UserRole);
+                    emptyItem->setFlags(emptyItem->flags() & ~Qt::ItemIsSelectable);
+                    m_model_2->appendRow(emptyItem);
                 }
                 ui->PIDView_2->setModel(m_model_2);
                 if(!m_model_2->rowCount()) {
@@ -517,11 +574,20 @@ void SpareWindow::RefreshData() {
                     workitem->setFlags(workitem->flags() & ~Qt::ItemIsSelectable);
                     m_model_2->appendRow(workitem);
                 }
+                int rowCountBeforeQuery = m_model_2->rowCount();
                 while(query_2.next()) {
                     if(!query_2.value(0).toString().isEmpty()) {
                         QStandardItem *modelitem = new QStandardItem(query_2.value(0).toString());
                         m_model_2->appendRow(modelitem);
                     }
+                }
+                // 如果该工站没有数据，显示提示
+                if(ui->ProductCombo_2->currentText() != "全部料号" && ui->WorkCombo->currentIndex() == 0
+                    && m_model_2->rowCount() == rowCountBeforeQuery) {
+                    QStandardItem *emptyItem = new QStandardItem("     该工站暂未\n     录入数据");
+                    emptyItem->setData(true, Qt::UserRole);
+                    emptyItem->setFlags(emptyItem->flags() & ~Qt::ItemIsSelectable);
+                    m_model_2->appendRow(emptyItem);
                 }
                 ui->PIDView_2->setModel(m_model_2);
                 if(!m_model_2->rowCount()) {
@@ -544,11 +610,20 @@ void SpareWindow::RefreshData() {
                     workitem->setFlags(workitem->flags() & ~Qt::ItemIsSelectable);
                     m_model_2->appendRow(workitem);
                 }
+                int rowCountBeforeQuery = m_model_2->rowCount();
                 while(query_2.next()) {
                     if(!query_2.value(0).toString().isEmpty()) {
                         QStandardItem *modelitem = new QStandardItem(query_2.value(0).toString());
                         m_model_2->appendRow(modelitem);
                     }
+                }
+                // 如果该工站没有数据，显示提示
+                if(ui->ProductCombo_2->currentText() != "全部料号" && ui->WorkCombo->currentIndex() == 0
+                    && m_model_2->rowCount() == rowCountBeforeQuery) {
+                    QStandardItem *emptyItem = new QStandardItem("     该工站暂未\n     录入数据");
+                    emptyItem->setData(true, Qt::UserRole);
+                    emptyItem->setFlags(emptyItem->flags() & ~Qt::ItemIsSelectable);
+                    m_model_2->appendRow(emptyItem);
                 }
                 ui->PIDView_2->setModel(m_model_2);
                 if(!m_model_2->rowCount()) {
@@ -571,11 +646,20 @@ void SpareWindow::RefreshData() {
                     workitem->setFlags(workitem->flags() & ~Qt::ItemIsSelectable);
                     m_model_2->appendRow(workitem);
                 }
+                int rowCountBeforeQuery = m_model_2->rowCount();
                 while(query_2.next()) {
                     if(!query_2.value(0).toString().isEmpty()) {
                         QStandardItem *modelitem = new QStandardItem(query_2.value(0).toString());
                         m_model_2->appendRow(modelitem);
                     }
+                }
+                // 如果该工站没有数据，显示提示
+                if(ui->ProductCombo_2->currentText() != "全部料号" && ui->WorkCombo->currentIndex() == 0
+                    && m_model_2->rowCount() == rowCountBeforeQuery) {
+                    QStandardItem *emptyItem = new QStandardItem("     该工站暂未\n     录入数据");
+                    emptyItem->setData(true, Qt::UserRole);
+                    emptyItem->setFlags(emptyItem->flags() & ~Qt::ItemIsSelectable);
+                    m_model_2->appendRow(emptyItem);
                 }
                 ui->PIDView_2->setModel(m_model_2);
                 if(!m_model_2->rowCount()) {
@@ -598,11 +682,20 @@ void SpareWindow::RefreshData() {
                     workitem->setFlags(workitem->flags() & ~Qt::ItemIsSelectable);
                     m_model_2->appendRow(workitem);
                 }
+                int rowCountBeforeQuery = m_model_2->rowCount();
                 while(query_2.next()) {
                     if(!query_2.value(0).toString().isEmpty()) {
                         QStandardItem *modelitem = new QStandardItem(query_2.value(0).toString());
                         m_model_2->appendRow(modelitem);
                     }
+                }
+                // 如果该工站没有数据，显示提示
+                if(ui->ProductCombo_2->currentText() != "全部料号" && ui->WorkCombo->currentIndex() == 0
+                    && m_model_2->rowCount() == rowCountBeforeQuery) {
+                    QStandardItem *emptyItem = new QStandardItem("     该工站暂未\n     录入数据");
+                    emptyItem->setData(true, Qt::UserRole);
+                    emptyItem->setFlags(emptyItem->flags() & ~Qt::ItemIsSelectable);
+                    m_model_2->appendRow(emptyItem);
                 }
                 ui->PIDView_2->setModel(m_model_2);
                 if(!m_model_2->rowCount()) {
@@ -788,6 +881,14 @@ void SpareWindow::on_ReturnButton_clicked() {
     this->close();
 }
 
+QString SpareWindow::extractSpareId(const QString &spareName) const {
+    int pos = spareName.indexOf('(');
+    if(pos != -1) {
+        return spareName.left(pos).trimmed();
+    }
+    return spareName;
+}
+
 void SpareWindow::on_OutButton_clicked() {
     QAbstractItemModel *model = ui->PIDView_1->model();
     if(!model) {
@@ -807,60 +908,96 @@ void SpareWindow::on_OutButton_clicked() {
     }
     QTextStream out(&file);
     out << ui->MoldCombo->currentText() << "#" << ui->ProductCombo_1->currentText() << ":\n";
-    int t = 0;
+    int t = 0, type = 0;
     for(int row = 0; row < model->rowCount(); ++row) {
         QModelIndex index = model->index(row, 0);
         QString text = model->data(index, Qt::DisplayRole).toString();
-        QString spare_name;
-        int pos = text.indexOf('(');
-        if(pos != -1) {
-            spare_name = text.left(pos).trimmed();
-        } else {
-            spare_name = text;
-        }
+        QString spare_name = extractSpareId(text);
         if(spare_name == "模具共用件" || spare_name.contains("零件号")) {
             if(spare_name != "模具共用件") {
-                out << "\n";
+                out << "\n----------------------------------------\n";
+                type++;
             }
             t = 0;
             out << spare_name << "\t\n";
         } else {
             t++;
+            QSqlQuery query;
+            query.prepare(QString("select %1 from chengxing_work where 产品料号 = :product_id and %2 = :spare_id").arg(
+                m_workNumList[type]).arg(m_workTypeList[type + 1]));
+            query.bindValue(":product_id", ui->ProductCombo_1->currentText());
+            query.bindValue(":spare_id", index.data().toString());
+            if(!query.exec()) {
+//                QMessageBox::warning(this, "查询模具数据", "模具备件数量查询失败：\n" + query.lastError().text(),
+//                    QMessageBox::Cancel);
+                qDebug() << "模具备件数量查询失败：\n" + query.lastError().text();
+            } else {
+                if(query.next()) {
+                    spare_name += QString("（%1件）").arg(query.value(0).toString());
+                }
+            }
             out << spare_name << "\t";
-            if(t % 10 == 0) {
-                out << "\n";
+            if(t % 6 == 0 && row < model->rowCount() - 1) {
+                // 检查下一行是否是工站标题（包含"."）或者是否为空
+                QModelIndex nextIndex = model->index(row + 1, 0);
+                QString nextText = model->data(nextIndex, Qt::DisplayRole).toString();
+                QString nextSpareName = extractSpareId(nextText);
+                // 只有当下一行不是工站标题时才换行
+                if(spare_name != "模具共用件" && !spare_name.contains("零件号")) {
+                    out << "\n";
+                }
             }
         }
     }
     out << "\n";
     out << "\n";
     out << ui->MoldCombo->currentText() << "#" << ui->ProductCombo_2->currentText() << ":\n";
+    type = 0;
     for(int row = 0; row < m_model_2->rowCount(); ++row) {
         QModelIndex index = m_model_2->index(row, 0);
         QString text = m_model_2->data(index, Qt::DisplayRole).toString();
-        QString spare_name;
-        int pos = text.indexOf('(');
-        if(pos != -1) {
-            spare_name = text.left(pos).trimmed();
-        } else {
-            spare_name = text;
-        }
+        QString spare_name = extractSpareId(text);
         if(spare_name == "模具共用件" || spare_name.contains("零件号")) {
             if(spare_name != "模具共用件") {
-                out << "\n";
+                out << "\n----------------------------------------\n";
+                type++;
             }
             t = 0;
             out << spare_name << "\t\n";
         } else {
             t++;
+            QSqlQuery query;
+            query.prepare(QString("select %1 from chengxing_work where 产品料号 = :product_id and %2 = :spare_id").arg(
+                m_workNumList[type]).arg(m_workTypeList[type + 1]));
+            query.bindValue(":product_id", ui->ProductCombo_2->currentText());
+            query.bindValue(":spare_id", index.data().toString());
+            if(!query.exec()) {
+//                QMessageBox::warning(this, "查询模具数据", "模具备件数量查询失败：\n" + query.lastError().text(),
+//                    QMessageBox::Cancel);
+                qDebug() << "模具备件数量查询失败：\n" + query.lastError().text();
+            } else {
+                if(query.next()) {
+                    spare_name += QString("（%1件）").arg(query.value(0).toString());
+                }
+            }
             out << spare_name << "\t";
-            if(t % 10 == 0) {
-                out << "\n";
+            if(t % 6 == 0 && row < model->rowCount() - 1) {
+                // 检查下一行是否是工站标题（包含"."）或者是否为空
+                QModelIndex nextIndex = model->index(row + 1, 0);
+                QString nextText = model->data(nextIndex, Qt::DisplayRole).toString();
+                QString nextSpareName = extractSpareId(nextText);
+                // 只有当下一行不是工站标题时才换行
+                if(spare_name != "模具共用件" && !spare_name.contains("零件号")) {
+                    out << "\n";
+                }
             }
         }
     }
     out << "\n";
     file.close();
+    QMessageBox::information(this, "导出数据", "数据导出成功", QMessageBox::Ok);
+    // 导出成功后自动打开文件
+    QDesktopServices::openUrl(QUrl::fromLocalFile(fileName));
 }
 
 void SpareWindow::on_PIDView_1_clicked(const QModelIndex &index) {
@@ -876,7 +1013,6 @@ void SpareWindow::on_PIDView_1_clicked(const QModelIndex &index) {
         return;
     } else {
         if(query.next()) {
-            ui->Label8->setText("       数量:");
             ui->NumLabel2->setText(query.value(0).toString());
             ui->NumLabel3->setText(query.value(1).toString());
         }
@@ -890,7 +1026,6 @@ void SpareWindow::on_PIDView_1_clicked(const QModelIndex &index) {
         return;
     } else {
         if(query.next()) {
-            ui->Label8->setText("单穴数量:");
             ui->NumLabel2->setText(query.value(0).toString());
             ui->NumLabel3->setText(query.value(1).toString());
         }
@@ -904,7 +1039,6 @@ void SpareWindow::on_PIDView_1_clicked(const QModelIndex &index) {
         return;
     } else {
         if(query.next()) {
-            ui->Label8->setText("单穴数量:");
             ui->NumLabel2->setText(query.value(0).toString());
             ui->NumLabel3->setText(query.value(1).toString());
         }
@@ -918,7 +1052,6 @@ void SpareWindow::on_PIDView_1_clicked(const QModelIndex &index) {
         return;
     } else {
         if(query.next()) {
-            ui->Label8->setText("单穴数量:");
             ui->NumLabel2->setText(query.value(0).toString());
             ui->NumLabel3->setText(query.value(1).toString());
         }
@@ -932,7 +1065,6 @@ void SpareWindow::on_PIDView_1_clicked(const QModelIndex &index) {
         return;
     } else {
         if(query.next()) {
-            ui->Label8->setText("单穴数量:");
             ui->NumLabel2->setText(query.value(0).toString());
             ui->NumLabel3->setText(query.value(1).toString());
         }
@@ -952,7 +1084,6 @@ void SpareWindow::on_PIDView_2_clicked(const QModelIndex &index) {
         return;
     } else {
         if(query.next()) {
-            ui->Label8->setText("       数量:");
             ui->NumLabel2->setText(query.value(0).toString());
             ui->NumLabel3->setText(query.value(1).toString());
         }
@@ -966,7 +1097,6 @@ void SpareWindow::on_PIDView_2_clicked(const QModelIndex &index) {
         return;
     } else {
         if(query.next()) {
-            ui->Label8->setText("单穴数量:");
             ui->NumLabel2->setText(query.value(0).toString());
             ui->NumLabel3->setText(query.value(1).toString());
         }
@@ -980,7 +1110,6 @@ void SpareWindow::on_PIDView_2_clicked(const QModelIndex &index) {
         return;
     } else {
         if(query.next()) {
-            ui->Label8->setText("单穴数量:");
             ui->NumLabel2->setText(query.value(0).toString());
             ui->NumLabel3->setText(query.value(1).toString());
         }
@@ -994,7 +1123,6 @@ void SpareWindow::on_PIDView_2_clicked(const QModelIndex &index) {
         return;
     } else {
         if(query.next()) {
-            ui->Label8->setText("单穴数量:");
             ui->NumLabel2->setText(query.value(0).toString());
             ui->NumLabel3->setText(query.value(1).toString());
         }
@@ -1008,7 +1136,6 @@ void SpareWindow::on_PIDView_2_clicked(const QModelIndex &index) {
         return;
     } else {
         if(query.next()) {
-            ui->Label8->setText("单穴数量:");
             ui->NumLabel2->setText(query.value(0).toString());
             ui->NumLabel3->setText(query.value(1).toString());
         }

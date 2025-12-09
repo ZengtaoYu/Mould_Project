@@ -47,6 +47,7 @@ private slots:
     void on_ProductCombo_2_currentIndexChanged(const QString &arg1);
     void on_PIDView_1_clicked(const QModelIndex &index);
     void on_PIDView_2_clicked(const QModelIndex &index);
+    QString extractSpareId(const QString &spareName) const;
 
 private:
     // 内部委托类
@@ -78,6 +79,7 @@ private:
 
     // 成员变量
     static const QStringList m_workTypeList;
+    static const QStringList m_workNumList;
     QStandardItemModel *m_model_1;
     QStandardItemModel *m_model_2;
 };

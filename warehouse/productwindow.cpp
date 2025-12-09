@@ -20,6 +20,8 @@
 #include <QTextStream>
 #include <QAbstractItemView>
 #include <QAbstractScrollArea>
+#include <QDesktopServices>
+#include <QUrl>
 
 // 常量定义
 const QString ProductWindow::ALL_PRODUCTS = "全部料号";
@@ -354,6 +356,8 @@ void ProductWindow::refreshModelData(QStandardItemModel *model, QSqlQuery &query
                 model->appendRow(workItem);
             }
         }
+        // 记录该工站查询前的行数
+        int rowCountBeforeQuery = model->rowCount();
         // 处理备件列表
         QStringList tempList = query.value(0).toString().split('#', Qt::SkipEmptyParts);
         QSet<QString> processedItems;
@@ -365,6 +369,13 @@ void ProductWindow::refreshModelData(QStandardItemModel *model, QSqlQuery &query
                 QStandardItem *modelItem = new QStandardItem(item);
                 model->appendRow(modelItem);
             }
+        }
+        // 如果该工站没有数据，显示提示
+        if(productText != ALL_PRODUCTS && workIndex == 0 && model->rowCount() == rowCountBeforeQuery) {
+            QStandardItem *emptyItem = new QStandardItem("     该工站暂未\n     录入数据");
+            emptyItem->setData(true, Qt::UserRole);
+            emptyItem->setFlags(emptyItem->flags() & ~Qt::ItemIsSelectable);
+            model->appendRow(emptyItem);
         }
     }
     // 如果没有数据，显示提示
@@ -447,6 +458,8 @@ void ProductWindow::on_OutButton_clicked() {
     exportModelToStream(out, model_2);
     file.close();
     QMessageBox::information(this, "导出数据", "数据导出成功", QMessageBox::Ok);
+    // 导出成功后自动打开文件
+    QDesktopServices::openUrl(QUrl::fromLocalFile(fileName));
 }
 
 void ProductWindow::exportModelToStream(QTextStream &out, QAbstractItemModel *model) {
@@ -460,7 +473,7 @@ void ProductWindow::exportModelToStream(QTextStream &out, QAbstractItemModel *mo
         if(spareName.contains(".")) {
             // 工站标题
             if(t != 0) {
-                out << "\n";
+                out << "\n----------------------------------------\n";
             }
             t = 1;
             out << spareName << "\t\n";
@@ -468,8 +481,16 @@ void ProductWindow::exportModelToStream(QTextStream &out, QAbstractItemModel *mo
             // 备件号
             t++;
             out << spareName << "\t";
-            if(t % SPARES_PER_LINE == 0) {
-                out << "\n";
+            // 判断是否需要换行：当达到每行数量限制且不是最后一行时才换行
+            if(t % SPARES_PER_LINE == 0 && row < model->rowCount() - 1) {
+                // 检查下一行是否是工站标题（包含"."）或者是否为空
+                QModelIndex nextIndex = model->index(row + 1, 0);
+                QString nextText = model->data(nextIndex, Qt::DisplayRole).toString();
+                QString nextSpareName = extractSpareId(nextText);
+                // 只有当下一行不是工站标题时才换行
+                if(!nextSpareName.contains(".")) {
+                    out << "\n";
+                }
             }
         }
     }
