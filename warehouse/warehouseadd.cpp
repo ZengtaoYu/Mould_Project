@@ -1234,6 +1234,9 @@ void WarehouseAdd::on_ExcleButton_clicked() {
     config.sync();
     int row = xlsx.dimension().rowCount() + 1;
     for(int n = 2; n < row; n++) {
+        if(xlsx.read(n, 1).toString().isEmpty()) {
+            continue;
+        }
         QString pid;
         QString sql;
         QSqlQuery query;

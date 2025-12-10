@@ -103,7 +103,8 @@ HandleData::~HandleData() {
 // ==================== 事件处理 ====================
 
 void HandleData::closeEvent(QCloseEvent *event) {
-    emit mysignal();
+    if(select_str != SELECT_TYPE_MESSAGE)
+        emit mysignal();
     event->accept();
 }
 
@@ -135,7 +136,6 @@ void HandleData::loadTableData() {
     if(m_dataLoaded) {
         return;  // 已经加载过，避免重复加载
     }
-    
     // 执行查询
     if(!myModel.select()) {
         // 某些表可能只在特定数据库中存在，查询失败时不弹出提示框
@@ -143,7 +143,6 @@ void HandleData::loadTableData() {
         m_dataLoaded = true;  // 标记为已尝试加载，避免重复尝试
         return;
     }
-    
     m_dataLoaded = true;
     // 数据加载完成后滚动到底部
     ui->tableView->scrollToBottom();

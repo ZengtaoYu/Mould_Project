@@ -134,10 +134,18 @@ void ProductWindow::setupCompleters() {
     // 为所有下拉框设置自动完成
     QStringList moldList;
     QSqlQuery query;
-    query.prepare("select 模具编号 from mold_message order by 模具编号 asc;");
+    QSettings config("userconfig.ini", QSettings::IniFormat);
+    query.prepare("select distinct 模具编号 from chonya_work order by 模具编号 asc;");
     if(query.exec()) {
+        bool exit_flag = false;
         while(query.next()) {
             moldList.append(query.value(0).toString());
+            if(query.value(0).toString() == config.value("SELECTIONCONFIG/Mold").toString())
+                exit_flag = true;
+        }
+        if(!exit_flag) {
+            moldList.prepend(config.value("SELECTIONCONFIG/Mold").toString());
+            exit_flag = false;
         }
         setupCompleterForComboBox(ui->MoldCombo, moldList);
     }
@@ -162,7 +170,7 @@ void ProductWindow::setupCompleterForComboBox(QComboBox *combo, const QStringLis
 
 void ProductWindow::loadMoldList() {
     QSqlQuery query;
-    query.prepare("select 模具编号 from mold_message order by 模具编号 asc;");
+    query.prepare("select distinct 模具编号 from chonya_work order by 模具编号 asc;");
     if(!query.exec()) {
         QMessageBox::warning(this, "界面初始化",
             "模具数据查询失败：\n" + query.lastError().text(),
@@ -170,8 +178,16 @@ void ProductWindow::loadMoldList() {
         return;
     }
     QStringList moldList;
+    QSettings config("userconfig.ini", QSettings::IniFormat);
+    bool exit_flag = false;
     while(query.next()) {
         moldList.append(query.value(0).toString());
+        if(query.value(0).toString() == config.value("SELECTIONCONFIG/Mold").toString())
+            exit_flag = true;
+    }
+    if(!exit_flag) {
+        moldList.prepend(config.value("SELECTIONCONFIG/Mold").toString());
+        exit_flag = false;
     }
     ui->MoldCombo->blockSignals(true);
     ui->MoldCombo->addItems(moldList);
@@ -179,7 +195,6 @@ void ProductWindow::loadMoldList() {
     // 设置自动完成
     setupCompleterForComboBox(ui->MoldCombo, moldList);
     // 从配置文件加载上次选择的模具
-    QSettings config("userconfig.ini", QSettings::IniFormat);
     ui->MoldCombo->setCurrentText(config.value("SELECTIONCONFIG/Mold").toString());
 }
 

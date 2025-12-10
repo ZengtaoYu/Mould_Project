@@ -343,6 +343,7 @@ void WarehouseWindow::refresh_information() {
 }
 
 void WarehouseWindow::refresh_data() {
+    ui->MoldEdit->blockSignals(true);
     // 防止重复调用
     if(isLoadingData) {
         qDebug() << "refresh_data() 已在执行中，跳过重复调用";
@@ -377,6 +378,7 @@ void WarehouseWindow::refresh_data() {
     ui->ModelEditc->clear();
     ui->ContainerCombo->setCurrentText("");
     // 注意：expandAll() 和配置恢复逻辑将在分批加载完成后执行
+    ui->MoldEdit->blockSignals(false);
 }
 
 void WarehouseWindow::refresh_datac() {
@@ -696,14 +698,20 @@ void WarehouseWindow::startProgressiveLoad(const QString &moldFilter, const QStr
     if(totalRecordsToLoad > 6000) { // 只有数据量较大时才显示进度条
         progressDialog = new QProgressDialog("正在加载数据...", "取消", 0, totalRecordsToLoad, this);
         progressDialog->setWindowModality(Qt::WindowModal);
-        progressDialog->setMinimumDuration(0);
+        progressDialog->setMinimumDuration(100);  // 延迟100ms显示，避免立即触发取消
+        progressDialog->setAutoClose(false);  // 禁止自动关闭
+        progressDialog->setAutoReset(false);  // 禁止自动重置
         progressDialog->setValue(0);
+        // 使用Qt::QueuedConnection延迟处理canceled信号，并通过wasCanceled()检查过滤虚假信号
         connect(progressDialog, &QProgressDialog::canceled, this, [this]() {
-            if(loadTimer1) loadTimer1->stop();
-            if(loadTimer2) loadTimer2->stop();
-            isLoadingData = false;  // 用户取消时重置标志
-            qDebug() << "用户取消加载，重置 isLoadingData 标志";
-        });
+            // 只有当用户真正点击取消按钮时才处理取消逻辑
+            if(progressDialog && progressDialog->wasCanceled()) {
+                if(loadTimer1) loadTimer1->stop();
+                if(loadTimer2) loadTimer2->stop();
+                isLoadingData = false;  // 用户取消时重置标志
+                qDebug() << "用户取消加载，重置 isLoadingData 标志";
+            }
+        }, Qt::QueuedConnection);
     }
     // ========== 第五步：创建并启动定时器 ==========
     if(!loadTimer1) {
@@ -729,7 +737,7 @@ void WarehouseWindow::startProgressiveFind(const QString &moldFilter, const QStr
         if(loadTimer1) {
             loadTimer1->stop();
         }
-        // 关闭之前的进度对话框
+        // 关闭之前的进度对话框（断开信号连接，避免触发canceled信号）
         if(progressDialog) {
             progressDialog->close();
             progressDialog->deleteLater();
@@ -791,13 +799,17 @@ void WarehouseWindow::startProgressiveFind(const QString &moldFilter, const QStr
         if(totalRecordsToLoad > 6000) { // 只有数据量较大时才显示进度条
             progressDialog = new QProgressDialog("正在加载数据...", "取消", 0, totalRecordsToLoad, this);
             progressDialog->setWindowModality(Qt::WindowModal);
-            progressDialog->setMinimumDuration(0);
+            progressDialog->setMinimumDuration(100);  // 延迟100ms显示，避免立即触发取消
+            progressDialog->setAutoClose(false);  // 禁止自动关闭
+            progressDialog->setAutoReset(false);  // 禁止自动重置
             progressDialog->setValue(0);
             connect(progressDialog, &QProgressDialog::canceled, this, [this]() {
-                if(loadTimer1) loadTimer1->stop();
-                isLoadingData = false;  // 用户取消时重置标志
-                qDebug() << "用户取消加载，重置 isLoadingData 标志";
-            });
+                if(progressDialog && progressDialog->wasCanceled()) {
+                    if(loadTimer1) loadTimer1->stop();
+                    isLoadingData = false;  // 用户取消时重置标志
+                    qDebug() << "用户取消加载，重置 isLoadingData 标志";
+                }
+            }, Qt::QueuedConnection);
         }
         // ========== 第五步：创建并启动定时器 ==========
         if(!loadTimer1) {
@@ -813,7 +825,7 @@ void WarehouseWindow::startProgressiveFind(const QString &moldFilter, const QStr
         if(loadTimer2) {
             loadTimer2->stop();
         }
-        // 关闭之前的进度对话框
+        // 关闭之前的进度对话框（断开信号连接，避免触发canceled信号）
         if(progressDialog) {
             progressDialog->close();
             progressDialog->deleteLater();
@@ -875,13 +887,17 @@ void WarehouseWindow::startProgressiveFind(const QString &moldFilter, const QStr
         if(totalRecordsToLoad > 6000) { // 只有数据量较大时才显示进度条
             progressDialog = new QProgressDialog("正在加载数据...", "取消", 0, totalRecordsToLoad, this);
             progressDialog->setWindowModality(Qt::WindowModal);
-            progressDialog->setMinimumDuration(0);
+            progressDialog->setMinimumDuration(100);  // 延迟100ms显示，避免立即触发取消
+            progressDialog->setAutoClose(false);  // 禁止自动关闭
+            progressDialog->setAutoReset(false);  // 禁止自动重置
             progressDialog->setValue(0);
             connect(progressDialog, &QProgressDialog::canceled, this, [this]() {
-                if(loadTimer2) loadTimer2->stop();
-                isLoadingData = false;  // 用户取消时重置标志
-                qDebug() << "用户取消加载，重置 isLoadingData 标志";
-            });
+                if(progressDialog && progressDialog->wasCanceled()) {
+                    if(loadTimer2) loadTimer2->stop();
+                    isLoadingData = false;  // 用户取消时重置标志
+                    qDebug() << "用户取消加载，重置 isLoadingData 标志";
+                }
+            }, Qt::QueuedConnection);
         }
         // ========== 第五步：创建并启动定时器 ==========
         if(!loadTimer2) {
@@ -973,7 +989,6 @@ void WarehouseWindow::finishDataLoading() {
     empty_contrl = false;
     // 重置加载标志，允许下次调用 refresh_data()
     isLoadingData = false;
-    qDebug() << "数据加载完成，重置 isLoadingData 标志";
 }
 
 void WarehouseWindow::on_FindButton_clicked() {
@@ -1939,8 +1954,8 @@ void WarehouseWindow::on_MessageLabelc_clicked() {
 
 void WarehouseWindow::on_BomButton_clicked() {
     if(ui->tabWidget->currentIndex() == 1 || ui->tabWidget->currentIndex() == 3) {
-        QDesktopServices::openUrl(QUrl("file://192.168.101.250/bom/注塑/", QUrl::TolerantMode));
+        QDesktopServices::openUrl(QUrl("file://Fserver/bom/注塑/", QUrl::TolerantMode));
     } else {
-        QDesktopServices::openUrl(QUrl("file://192.168.101.250/bom/冲压/", QUrl::TolerantMode));
+        QDesktopServices::openUrl(QUrl("file://Fserver/bom/冲压/", QUrl::TolerantMode));
     }
 }

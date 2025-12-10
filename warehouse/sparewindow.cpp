@@ -34,6 +34,7 @@ SpareWindow::SpareWindow(QWidget *parent)
     ColorDelegate *delegate = new ColorDelegate();
     ui->PIDView_1->setItemDelegate(delegate);
     ui->PIDView_2->setItemDelegate(delegate);
+    QSettings config("userconfig.ini", QSettings::IniFormat);
     QListView *listView1 = qobject_cast<QListView *>(ui->MoldCombo->view());
     QScroller *Scroller1 = QScroller::scroller(listView1);
     Scroller1->grabGesture(listView1->viewport(), QScroller::LeftMouseButtonGesture);
@@ -63,17 +64,26 @@ SpareWindow::SpareWindow(QWidget *parent)
                     "QAbstractItemView::item:hover{background-color:rgb(0, 120, 212)}";
     QStringList mold_list;
     ui->MoldCombo->blockSignals(true);
-    sql = "select 模具编号 from mold_message order by 模具编号 asc;";
+    sql = "select distinct 模具编号 from chengxing_work order by 模具编号 asc;";
     if(!query.exec(sql)) {
         QMessageBox::warning(this, "界面初始化", "模具数据查询失败：\n" + query.lastError().text(),
             QMessageBox::Cancel);
         return;
     } else {
+        bool exit_flag = false;
         while(query.next()) {
             mold_list.append(query.value(0).toString());
+            if(query.value(0).toString() == config.value("SELECTIONCONFIG/Mold").toString())
+                exit_flag = true;
+        }
+        if(!exit_flag) {
+            mold_list.prepend(config.value("SELECTIONCONFIG/Mold").toString());
+            exit_flag = false;
         }
     }
     ui->MoldCombo->addItems(mold_list);
+    if(ui->MoldCombo->itemText(1).isEmpty())
+        ui->MoldCombo->removeItem(1);
     ui->MoldCombo->blockSignals(false);
     QCompleter *MoldCompleter = new QCompleter(mold_list, this);
     MoldCompleter->setMaxVisibleItems(10);
@@ -83,7 +93,6 @@ SpareWindow::SpareWindow(QWidget *parent)
     ui->MoldCombo->setCompleter(MoldCompleter);
     MoldCompleter->popup()->setItemDelegate(d);
     MoldCompleter->popup()->setStyleSheet(style);
-    QSettings config("userconfig.ini", QSettings::IniFormat);
     ui->MoldCombo->setCurrentText(config.value("SELECTIONCONFIG/Mold").toString());
     QStringList product_list;
     ui->ProductCombo_1->blockSignals(true);

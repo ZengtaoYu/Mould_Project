@@ -806,7 +806,7 @@ void ChonyaWindow::on_BomButton_clicked() {
     choice_box.addButton("取消", QMessageBox::RejectRole);
     choice_box.exec();
     if(choice_box.clickedButton() == button1) {
-        QDesktopServices::openUrl(QUrl("file://192.168.101.250/bom/冲压/", QUrl::TolerantMode));
+        QDesktopServices::openUrl(QUrl("file://Fserver/bom/冲压/", QUrl::TolerantMode));
     } else if(choice_box.clickedButton() == button2) {
         handleBom = new HandleBom(this);
         handleBom->setWindowTitle("BOM表查询");
