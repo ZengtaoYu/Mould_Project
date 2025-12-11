@@ -40,6 +40,7 @@ MainWindow::MainWindow(QWidget *parent)
         config.setValue("UserName", "");
         config.setValue("PassWord", "");
         config.setValue("IsRemberPas", false);
+        config.setValue("System", "user");
         config.endGroup();
         config.beginGroup("DOCUMENTCONFIG");
         config.setValue("DocumentPath", QStandardPaths::writableLocation(QStandardPaths::DesktopLocation) + "/");

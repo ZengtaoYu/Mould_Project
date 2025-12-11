@@ -7461,7 +7461,11 @@ debug/main.o: ../main.cpp ../mainwindow.h \
 		D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/QSharedMemory \
 		D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qsharedmemory.h \
 		D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/QTranslator \
-		D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qtranslator.h
+		D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qtranslator.h \
+		D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/QFileInfo \
+		D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qfileinfo.h \
+		D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/QDir \
+		D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qdir.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\main.o ..\main.cpp
 
 debug/mainwindow.o: ../mainwindow.cpp ../mainwindow.h \
