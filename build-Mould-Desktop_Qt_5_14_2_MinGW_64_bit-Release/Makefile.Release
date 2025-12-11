@@ -14129,8 +14129,13 @@ release/sparewindow.o: ../warehouse/sparewindow.cpp ../warehouse/sparewindow.h \
 		D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/QListView \
 		D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qlistview.h \
 		D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/QFile \
+		D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/QDebug \
 		D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/QIODevice \
-		D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtGui/QStandardItem
+		D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtGui/QStandardItem \
+		D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtGui/QDesktopServices \
+		D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtGui/qdesktopservices.h \
+		D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qstandardpaths.h \
+		D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/QUrl
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\sparewindow.o ..\warehouse\sparewindow.cpp
 
 release/warehouseout.o: ../warehouse/warehouseout.cpp ../warehouse/warehouseout.h \
@@ -15126,7 +15131,11 @@ release/productwindow.o: ../warehouse/productwindow.cpp ../warehouse/productwind
 		D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qstyleditemdelegate.h \
 		D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/QTextStream \
 		D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/QAbstractItemView \
-		D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/QAbstractScrollArea
+		D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/QAbstractScrollArea \
+		D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtGui/QDesktopServices \
+		D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtGui/qdesktopservices.h \
+		D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qstandardpaths.h \
+		D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/QUrl
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\productwindow.o ..\warehouse\productwindow.cpp
 
 release/warehouseenter.o: ../warehouse/warehouseenter.cpp ../warehouse/warehouseenter.h \
@@ -15525,6 +15534,8 @@ release/warehousewindow.o: ../warehouse/warehousewindow.cpp ../warehouse/warehou
 		D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qmenu.h \
 		D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qaction.h \
 		D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qactiongroup.h \
+		D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/QProcess \
+		D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qprocess.h \
 		D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/QPushButton \
 		D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qpushbutton.h \
 		D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qabstractbutton.h \

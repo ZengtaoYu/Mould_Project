@@ -458,6 +458,19 @@ void WarehouseWindow::loadBatchCyView() {
         QFont font1 = ui->CyView->header()->font();
         font1.setPointSize(18);
         ui->CyView->header()->setFont(font1);
+        // 选中第一个父节点的第一个子节点并触发点击事件
+        if(model1 && model1->rowCount() > 0 && find_control1) {
+            QModelIndex firstParentIndex = model1->index(0, 0);
+            if(model1->hasChildren(firstParentIndex)) {
+                QModelIndex firstChildIndex = model1->index(0, 0, firstParentIndex);
+                ui->CyView->setCurrentIndex(firstChildIndex);
+                ui->CyView->selectionModel()->select(firstChildIndex, QItemSelectionModel::Select | QItemSelectionModel::Rows);
+                ui->CyView->scrollTo(firstChildIndex, QAbstractItemView::PositionAtCenter);
+                // 触发点击事件
+                on_CyView_clicked(firstChildIndex);
+            }
+        }
+        find_control1 = false;
         // 检查是否两个视图都加载完成
         if(pendingRecords2.isEmpty()) {
             finishDataLoading();
@@ -520,6 +533,19 @@ void WarehouseWindow::loadBatchCxView() {
         QFont font2 = ui->CxView->header()->font();
         font2.setPointSize(18);
         ui->CxView->header()->setFont(font2);
+        // 选中第一个父节点的第一个子节点并触发点击事件
+        if(model2 && model2->rowCount() > 0 && find_control2) {
+            QModelIndex firstParentIndex = model2->index(0, 0);
+            if(model2->hasChildren(firstParentIndex)) {
+                QModelIndex firstChildIndex = model2->index(0, 0, firstParentIndex);
+                ui->CxView->setCurrentIndex(firstChildIndex);
+                ui->CxView->selectionModel()->select(firstChildIndex, QItemSelectionModel::Select | QItemSelectionModel::Rows);
+                ui->CxView->scrollTo(firstChildIndex, QAbstractItemView::PositionAtCenter);
+                // 触发点击事件
+                on_CxView_clicked(firstChildIndex);
+            }
+        }
+        find_control2 = false;
         // 检查是否两个视图都加载完成
         if(pendingRecords1.isEmpty()) {
             finishDataLoading();
@@ -733,6 +759,7 @@ void WarehouseWindow::startProgressiveLoad(const QString &moldFilter, const QStr
 
 void WarehouseWindow::startProgressiveFind(const QString &moldFilter, const QString &spareFilter, int tabIndex) {
     if(tabIndex == 2) {
+        find_control1 = true;
         // 停止之前的加载（如果正在进行）
         if(loadTimer1) {
             loadTimer1->stop();
@@ -821,6 +848,7 @@ void WarehouseWindow::startProgressiveFind(const QString &moldFilter, const QStr
             loadTimer1->start(10);
         }
     } else if(tabIndex == 3) {
+        find_control1 = true;
         // 停止之前的加载（如果正在进行）
         if(loadTimer2) {
             loadTimer2->stop();

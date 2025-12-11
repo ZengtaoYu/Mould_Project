@@ -186,6 +186,8 @@ private:
     QVariant authvalue_;  // 权限值
     bool curr_auth;  // 当前权限状态
     bool empty_contrl;
+    bool find_control1;
+    bool find_control2;
     QVariant namevalue_;  // 用户名值
     QString curr_name;  // 当前用户名
     QXlsx::Format Song12C;  // Excel格式设置

@@ -440,6 +440,14 @@ void SumoWindow::on_MoldID_returnPressed() {
         ui->ModleList->setSelectionBehavior(QAbstractItemView::SelectRows);
         ui->ModleList->resizeRowsToContents();
         sortModelByMaintenanceStatus();
+        // 选中第一行并触发点击事件
+        if(standardModel->rowCount() > 0) {
+            QModelIndex firstIndex = standardModel->index(0, 0);
+            ui->ModleList->setCurrentIndex(firstIndex);
+            ui->ModleList->selectionModel()->select(firstIndex, QItemSelectionModel::Select | QItemSelectionModel::Rows);
+            ui->ModleList->scrollTo(firstIndex, QAbstractItemView::PositionAtCenter);
+            on_ModleList_clicked(firstIndex);
+        }
     }
 }
 
@@ -560,7 +568,16 @@ void SumoWindow::on_FindButton_clicked() {
         ui->ModleList->setSelectionBehavior(QAbstractItemView::SelectRows);
         ui->ModleList->resizeRowsToContents();
         sortModelByMaintenanceStatus();
-        id_value = "";
+        // 选中第一行并触发点击事件
+        if(standardModel->rowCount() > 0) {
+            QModelIndex firstIndex = standardModel->index(0, 0);
+            ui->ModleList->setCurrentIndex(firstIndex);
+            ui->ModleList->selectionModel()->select(firstIndex, QItemSelectionModel::Select | QItemSelectionModel::Rows);
+            ui->ModleList->scrollTo(firstIndex, QAbstractItemView::PositionAtCenter);
+            on_ModleList_clicked(firstIndex);
+        } else {
+            id_value = "";
+        }
     }
 }
 
