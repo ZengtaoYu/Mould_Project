@@ -126,9 +126,21 @@ WarehouseWindow::WarehouseWindow(QVariant authority, QVariant name, QWidget *mai
     timer = new QTimer(this);
     connect(timer, &QTimer::timeout, this, &WarehouseWindow::refresh_information);
     timer->start(1000);
+    QFont font = ui->CyView->header()->font();
+    font.setPointSize(18);
+    ui->CyView->header()->setFont(font);
+    ui->CyView->header()->resizeSection(0, 220);
+    ui->CyView->header()->resizeSection(1, 115);
+    ui->CyView->header()->resizeSection(2, 115);
+    ui->CyView->header()->resizeSection(3, 115);
     ui->CyView->header()->setDefaultAlignment(Qt::AlignHCenter);
     ui->CyView->setEditTriggers(QAbstractItemView::NoEditTriggers);
     ui->CyView->setItemsExpandable(true);
+    ui->CxView->header()->setFont(font);
+    ui->CxView->header()->resizeSection(0, 220);
+    ui->CxView->header()->resizeSection(1, 115);
+    ui->CxView->header()->resizeSection(2, 115);
+    ui->CxView->header()->resizeSection(3, 115);
     ui->CxView->header()->setDefaultAlignment(Qt::AlignHCenter);
     ui->CxView->setEditTriggers(QAbstractItemView::NoEditTriggers);
     ui->CxView->setItemsExpandable(true);
@@ -455,9 +467,6 @@ void WarehouseWindow::loadBatchCyView() {
         ui->CyView->header()->resizeSection(1, 115);
         ui->CyView->header()->resizeSection(2, 115);
         ui->CyView->header()->resizeSection(3, 115);
-        QFont font1 = ui->CyView->header()->font();
-        font1.setPointSize(18);
-        ui->CyView->header()->setFont(font1);
         // 选中第一个父节点的第一个子节点并触发点击事件
         if(model1 && model1->rowCount() > 0 && find_control1) {
             QModelIndex firstParentIndex = model1->index(0, 0);
@@ -530,9 +539,6 @@ void WarehouseWindow::loadBatchCxView() {
         ui->CxView->header()->resizeSection(1, 115);
         ui->CxView->header()->resizeSection(2, 115);
         ui->CxView->header()->resizeSection(3, 115);
-        QFont font2 = ui->CxView->header()->font();
-        font2.setPointSize(18);
-        ui->CxView->header()->setFont(font2);
         // 选中第一个父节点的第一个子节点并触发点击事件
         if(model2 && model2->rowCount() > 0 && find_control2) {
             QModelIndex firstParentIndex = model2->index(0, 0);
@@ -705,11 +711,6 @@ void WarehouseWindow::startProgressiveLoad(const QString &moldFilter, const QStr
     model1 = new QStandardItemModel(this);
     ui->CyView->setModel(model1);
     model1->setHorizontalHeaderLabels({"备件号", "安全库存", "总库存量", "存放柜号"});
-    // 在加载前设置列宽
-    ui->CyView->header()->resizeSection(0, 220);
-    ui->CyView->header()->resizeSection(1, 115);
-    ui->CyView->header()->resizeSection(2, 115);
-    ui->CyView->header()->resizeSection(3, 115);
     model2 = new QStandardItemModel(this);
     ui->CxView->setModel(model2);
     model2->setHorizontalHeaderLabels({"备件号", "安全库存", "总库存量", "存放柜号"});
@@ -815,11 +816,6 @@ void WarehouseWindow::startProgressiveFind(const QString &moldFilter, const QStr
         model1 = new QStandardItemModel(this);
         ui->CyView->setModel(model1);
         model1->setHorizontalHeaderLabels({"备件号", "安全库存", "总库存量", "存放柜号"});
-        // 在加载前设置列宽
-        ui->CyView->header()->resizeSection(0, 220);
-        ui->CyView->header()->resizeSection(1, 115);
-        ui->CyView->header()->resizeSection(2, 115);
-        ui->CyView->header()->resizeSection(3, 115);
         // ========== 第四步：创建进度对话框 ==========
         totalRecordsToLoad = pendingRecords1.size() + 1;
         loadedRecordsCount = 0;

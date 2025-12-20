@@ -120,6 +120,7 @@ void ChonyaKeep::processStateConfiguration() {
     bool hideKeepType = (curr_stata == static_cast<int>(MaintenanceState::AbnormalRepair) ||
         curr_stata == static_cast<int>(MaintenanceState::LastPieceDefect) ||
         curr_stata == static_cast<int>(MaintenanceState::MajorMaintenance) ||
+        curr_stata == static_cast<int>(MaintenanceState::IdleOver6Months) ||
         curr_stata == static_cast<int>(MaintenanceState::OtherOperation));
     ui->Label17->setVisible(!hideKeepType);
     ui->KeepType->setVisible(!hideKeepType);
@@ -149,7 +150,6 @@ void ChonyaKeep::processStateConfiguration() {
         break;
     case static_cast<int>(MaintenanceState::IdleOver6Months):
         ui->Label1->setText(title_header + "呆滞6个月以上");
-        ui->AddCheck->show();
         break;
     case static_cast<int>(MaintenanceState::OtherOperation):
         ui->Label1->setText(title_header + "其它操作");
@@ -634,6 +634,11 @@ bool ChonyaKeep::insertProductionData(QSqlQuery &query, const QString &maintenan
         query.bindValue(":vulnerable_num", "0");
         query.bindValue(":molding_num", "0");
         query.bindValue(":des", MaintenanceConstants::MAJOR_MAINTENANCE);
+    } else if(maintenanceType == MaintenanceConstants::IDLE_OVER_6_MONTHS) {
+        query.bindValue(":feed_num", "0");
+        query.bindValue(":vulnerable_num", "0");
+        query.bindValue(":molding_num", "0");
+        query.bindValue(":des", MaintenanceConstants::IDLE_OVER_6_MONTHS);
     }
     if(!query.exec()) {
         showWarning("模具保养", "产量数据插入失败：\n" + query.lastError().text());
@@ -720,6 +725,25 @@ void ChonyaKeep::handleRegularMaintenance() {
 void ChonyaKeep::handleMajorMaintenance() {
     QSqlQuery query;
     if(!insertProductionData(query, MaintenanceConstants::MAJOR_MAINTENANCE)) {
+        return;
+    }
+    // 更新所有类型的模具信息
+    QStringList moldNatures = {MaintenanceConstants::WHOLE_MOLD,
+        MaintenanceConstants::FEED_PART,
+        MaintenanceConstants::VULNERABLE_PART,
+        MaintenanceConstants::MOLDING_PART
+    };
+    for(const QString &nature : moldNatures) {
+        if(!updateInformationMessage(query, nature)) {
+            return;
+        }
+    }
+    openProductionInputWindow();
+}
+
+void ChonyaKeep::handleIdleOver6Months() {
+    QSqlQuery query;
+    if(!insertProductionData(query, MaintenanceConstants::IDLE_OVER_6_MONTHS)) {
         return;
     }
     // 更新所有类型的模具信息
@@ -871,9 +895,12 @@ void ChonyaKeep::on_FinishedButton_clicked() {
         handleRegularMaintenance();
     }
     if(curr_stata == static_cast<int>(MaintenanceState::MajorMaintenance) ||
-        (ui->KeepType->isVisible() && ui->StataDes->isVisible() &&
-        ui->StataDes->currentText() == MaintenanceConstants::MAJOR_MAINTENANCE)) {
+        (ui->StataDes->isVisible() && ui->StataDes->currentText() == MaintenanceConstants::MAJOR_MAINTENANCE)) {
         handleMajorMaintenance();
+    }
+    if(curr_stata == static_cast<int>(MaintenanceState::IdleOver6Months) ||
+        (ui->StataDes->isVisible() && ui->StataDes->currentText() == MaintenanceConstants::MAJOR_MAINTENANCE)) {
+        handleIdleOver6Months();
     }
     // 确定状态描述
     determineStateAndDescription();

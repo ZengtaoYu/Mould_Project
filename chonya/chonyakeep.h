@@ -137,6 +137,7 @@ private:
     void handleCloseOrderMaintenance();
     void handleRegularMaintenance();
     void handleMajorMaintenance();
+    void handleIdleOver6Months();
     void openProductionInputWindow();
 
     // 历史记录相关

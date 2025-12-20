@@ -379,7 +379,7 @@ void ProductWindow::refreshModelData(QStandardItemModel *model, QSqlQuery &query
         for(const QString &item : tempList) {
             if(!item.isEmpty() &&
                 !processedItems.contains(item) &&
-                !(productText == ALL_PRODUCTS && item == "共用")) {
+                !(productText == ALL_PRODUCTS && (item == "共用" || item == "此站不用"))) {
                 processedItems.insert(item);
                 QStandardItem *modelItem = new QStandardItem(item);
                 model->appendRow(modelItem);
