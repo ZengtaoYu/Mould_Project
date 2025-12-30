@@ -24,7 +24,7 @@ MainWindow::MainWindow(QWidget *parent)
     , m_userName("")
     , m_authority(false)
     , m_isRemember(false)
-    , m_appVersion("v4.12.20")
+    , m_appVersion("v4.12.26")
     , m_adminClickCount(0) {
     ui->setupUi(this);
     // 初始化配置文件

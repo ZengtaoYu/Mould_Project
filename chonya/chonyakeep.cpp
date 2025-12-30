@@ -772,12 +772,14 @@ void ChonyaKeep::exportHistoryRecords(const QString &monthFilter, const QString 
     if(monthFilter.isEmpty()) {
         sql = "SELECT * FROM keep_message";
     } else {
-        sql = "SELECT * FROM keep_message WHERE 日期 LIKE :date_filter AND 模具编号 = :mold_id";
+        qDebug() << monthFilter;
+        qDebug() << ui->MoldID->text();
+        sql = "select * from keep_message where 日期 like :date_filter and 模具编号 = :mold_id";
         query.prepare(sql);
         query.bindValue(":date_filter", monthFilter + "%");
         query.bindValue(":mold_id", ui->MoldID->text());
     }
-    if(!query.exec(sql)) {
+    if(!query.exec()) {
         showWarning("导出维修&保养记录履历", "保养数据查询失败：\n" + query.lastError().text());
         return;
     }
