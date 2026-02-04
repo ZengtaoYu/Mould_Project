@@ -528,7 +528,7 @@ bool SumoKeep::exportToExcel(const QString &sql, const QString &defaultFileName)
     QXlsx::Document xlsx3(QString(":/ducument/%1_keep3.xlsx").arg("sumo"));
     int row = 3;
     while(query.next()) {
-        for(int i = 1; i < 13; i++) {
+        for(int i = 1; i < 18; i++) {
             xlsx3.write(row, i, query.value(i - 1).toString(), Song12CB);
         }
         row++;
